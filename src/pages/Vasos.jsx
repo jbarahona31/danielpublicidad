@@ -1,10 +1,14 @@
+import Gallery from "../components/Gallery";
+
 export default function Vasos() {
   return (
     <main>
       <h1>Vasos Personalizados</h1>
-      <p>
-        Vasos y pocillos personalizados para eventos y publicidad.
-      </p>
+      <Gallery images={[
+        "/images/vasos/1.jpg",
+        "/images/vasos/2.jpg"
+      ]} />
+      <a href="/contacto" className="button">Cotizar vasos</a>
     </main>
   );
 }
