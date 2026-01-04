@@ -1,16 +1,68 @@
-# React + Vite
+# Daniel Publicidad
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Sitio web corporativo para Daniel Publicidad, especialistas en uniformes deportivos personalizados, estampados, gorras y vasos publicitarios.
 
-Currently, two official plugins are available:
+## 🚀 Stack Tecnológico
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React 19** - Biblioteca de interfaz de usuario
+- **Vite** - Herramienta de construcción y desarrollo
+- **React Router** - Navegación entre páginas
 
-## React Compiler
+## 📦 Estructura del Proyecto
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```
+danielpublicidad/
+├── public/
+│   └── logo.png
+├── src/
+│   ├── components/
+│   │   ├── Navbar.jsx
+│   │   └── Footer.jsx
+│   ├── pages/
+│   │   ├── Home.jsx
+│   │   ├── Uniformes.jsx
+│   │   ├── Estampados.jsx
+│   │   ├── Gorras.jsx
+│   │   ├── Vasos.jsx
+│   │   └── Contacto.jsx
+│   ├── styles/
+│   │   └── global.css
+│   ├── App.jsx
+│   └── main.jsx
+└── package.json
+```
 
-## Expanding the ESLint configuration
+## 🎨 Diseño
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Tema oscuro**: Fondo negro (#0f0f0f)
+- **Color principal**: Amarillo (#facc15)
+- **Color de acento**: Rojo (#e10600)
+- **Tipografía**: Segoe UI, Arial, sans-serif
+
+## 🛠️ Comandos
+
+```bash
+# Instalar dependencias
+npm install
+
+# Modo desarrollo
+npm run dev
+
+# Construir para producción
+npm run build
+
+# Vista previa de producción
+npm run preview
+
+# Linter
+npm run lint
+```
+
+## 📄 Páginas
+
+- **Inicio** - Presentación de la empresa
+- **Uniformes** - Uniformes deportivos personalizados
+- **Estampados** - Servicios de estampado
+- **Gorras** - Gorras personalizadas
+- **Vasos** - Vasos y pocillos publicitarios
+- **Contacto** - Información de contacto
