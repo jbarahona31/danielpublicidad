@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Home() {
   return (
     <main>
@@ -13,9 +15,9 @@ export default function Home() {
         eventos y marcas.
       </p>
 
-      <a href="/contacto" className="button">
+      <Link to="/contacto" className="button">
         Solicitar cotización
-      </a>
+      </Link>
     </main>
   );
 }
