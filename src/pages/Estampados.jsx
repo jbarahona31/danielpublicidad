@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Gallery from "../components/Gallery";
 
 export default function Estampados() {
@@ -8,7 +9,7 @@ export default function Estampados() {
         "/images/estampados/1.jpg",
         "/images/estampados/2.jpg"
       ]} />
-      <a href="/contacto" className="button">Cotizar estampados</a>
+      <Link to="/contacto" className="button">Cotizar estampados</Link>
     </main>
   );
 }

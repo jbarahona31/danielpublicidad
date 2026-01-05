@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Gallery from "../components/Gallery";
 
 export default function Gorras() {
@@ -8,7 +9,7 @@ export default function Gorras() {
         "/images/gorras/1.jpg",
         "/images/gorras/2.jpg"
       ]} />
-      <a href="/contacto" className="button">Cotizar gorras</a>
+      <Link to="/contacto" className="button">Cotizar gorras</Link>
     </main>
   );
 }

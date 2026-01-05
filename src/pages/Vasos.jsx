@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Gallery from "../components/Gallery";
 
 export default function Vasos() {
@@ -8,7 +9,7 @@ export default function Vasos() {
         "/images/vasos/1.jpg",
         "/images/vasos/2.jpg"
       ]} />
-      <a href="/contacto" className="button">Cotizar vasos</a>
+      <Link to="/contacto" className="button">Cotizar vasos</Link>
     </main>
   );
 }
