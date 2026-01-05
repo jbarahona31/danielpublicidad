@@ -274,7 +274,6 @@ main {
 .gallery-item:hover {
   transform: translateY(-8px);
   box-shadow: 0 20px 40px rgba(250, 204, 21, 0.2);
-  border-color: #facc15;
 }
 
 .gallery-item img {
