@@ -23,14 +23,20 @@ function Model3DWithTexture({ modelPath, texturePath }) {
     
     clonedScene.traverse((child) => {
       if (child.isMesh) {
-        // Preserve original material properties
+        // Preserve original material properties with proper type checking
         const originalMaterial = child.material;
+        const roughness = originalMaterial && typeof originalMaterial.roughness === 'number' 
+          ? originalMaterial.roughness 
+          : 0.5;
+        const metalness = originalMaterial && typeof originalMaterial.metalness === 'number'
+          ? originalMaterial.metalness
+          : 0.1;
         
         // Create new material with texture
         child.material = new THREE.MeshStandardMaterial({
           map: configuredTexture,
-          roughness: originalMaterial.roughness || 0.5,
-          metalness: originalMaterial.metalness || 0.1,
+          roughness,
+          metalness,
         });
       }
     });
@@ -120,6 +126,9 @@ function Loader() {
   );
 }
 
+// Constants
+const CANVAS_BG_COLOR = '#0f0f0f';
+
 /**
  * ErrorBoundary Component for 3D model loading errors
  */
@@ -130,11 +139,12 @@ class ModelErrorBoundary extends React.Component {
   }
 
   static getDerivedStateFromError() {
+    // Return state update to trigger re-render with fallback
     return { hasError: true };
   }
 
-  componentDidCatch(error) {
-    console.error("Error loading 3D model:", error);
+  componentDidCatch(error, errorInfo) {
+    console.error("Error loading 3D model:", error, errorInfo);
     if (this.props.onError) {
       this.props.onError();
     }
@@ -192,7 +202,7 @@ export default function Product3DViewer({
           powerPreference: "high-performance"
         }}
         onCreated={({ gl }) => {
-          gl.setClearColor('#0f0f0f', 1);
+          gl.setClearColor(CANVAS_BG_COLOR, 1);
         }}
         onError={(err) => {
           console.error("Canvas error:", err);
