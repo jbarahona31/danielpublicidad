@@ -24,6 +24,67 @@ body {
 
 main { padding: 60px 40px; max-width: 1200px; margin: auto; }
 
+/* HOME */
+.home {
+  min-height: 100vh;
+}
+
+.hero {
+  max-width: 900px;
+  margin: auto;
+  padding: 140px 20px 100px;
+}
+
+.hero h1 {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 22px;
+  color: #facc15;
+  margin-bottom: 24px;
+  font-weight: 500;
+}
+
+.hero-text {
+  font-size: 17px;
+  line-height: 1.7;
+  color: #e5e5e5;
+  max-width: 700px;
+}
+
+/* LISTA DE BENEFICIOS */
+.features {
+  list-style: none;
+  padding: 0;
+  margin: 30px 0;
+}
+
+.features li {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+/* BOTONES PROFESIONALES */
+.button.primary {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 14px 34px;
+  border-radius: 40px;
+  background: #facc15;
+  color: #000;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+
+.button.primary:hover {
+  background: #000;
+  color: #facc15;
+  border: 2px solid #facc15;
+}
+
 .button {
   display: inline-block;
   margin-top: 20px;
@@ -82,4 +143,16 @@ footer {
   .navbar { flex-direction: column; gap: 12px; }
   .menu { flex-wrap: wrap; justify-content: center; }
   main { padding: 40px 20px; }
+
+  .hero h1 {
+    font-size: 34px;
+  }
+
+  .subtitle {
+    font-size: 18px;
+  }
+
+  .hero {
+    padding: 110px 20px 80px;
+  }
 }
