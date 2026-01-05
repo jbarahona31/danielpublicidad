@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Home() {
   return (
     <main>
@@ -5,7 +7,7 @@ export default function Home() {
       <p>
         Especialistas en uniformes, estampados, gorras y vasos personalizados.
       </p>
-      <a href="/contacto" className="button">Solicitar cotización</a>
+      <Link to="/contacto" className="button">Solicitar cotización</Link>
     </main>
   );
 }

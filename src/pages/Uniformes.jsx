@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Gallery from "../components/Gallery";
 import Model3D from "../components/Model3D";
 
@@ -13,7 +14,7 @@ export default function Uniformes() {
       <h1>Uniformes Personalizados</h1>
       <Model3D />
       <Gallery images={images} />
-      <a href="/contacto" className="button">Cotizar uniformes</a>
+      <Link to="/contacto" className="button">Cotizar uniformes</Link>
     </main>
   );
 }
