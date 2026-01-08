@@ -28,15 +28,15 @@ collections:
       - {label: "Título", name: "title", widget: "string", default: "Gorra"}
       - {label: "Fecha", name: "date", widget: "datetime", default: ""}
 
-  - name: "vasos"
-    label: "Vasos"
-    label_singular: "Vaso"
-    folder: "public/images/vasos"
+  - name: "posillos"
+    label: "Posillos"
+    label_singular: "Posillo"
+    folder: "public/images/posillos"
     create: true
     slug: "{{slug}}"
     fields:
       - {label: "Imagen", name: "image", widget: "image"}
-      - {label: "Título", name: "title", widget: "string", default: "Vaso"}
+      - {label: "Título", name: "title", widget: "string", default: "Posillo"}
       - {label: "Fecha", name: "date", widget: "datetime", default: ""}
 
   - name: "estampados"

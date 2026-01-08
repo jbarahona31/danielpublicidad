@@ -7,7 +7,7 @@ import Home from "./pages/Home";
 import Uniformes from "./pages/Uniformes";
 import Estampados from "./pages/Estampados";
 import Gorras from "./pages/Gorras";
-import Vasos from "./pages/Vasos";
+import Posillos from "./pages/Posillos";
 import Contacto from "./pages/Contacto";
 import MensajeEnviado from "./pages/MensajeEnviado";
 
@@ -21,7 +21,7 @@ export default function App() {
         <Route path="/uniformes" element={<Uniformes />} />
         <Route path="/estampados" element={<Estampados />} />
         <Route path="/gorras" element={<Gorras />} />
-        <Route path="/vasos" element={<Vasos />} />
+        <Route path="/posillos" element={<Posillos />} />
         <Route path="/contacto" element={<Contacto />} />
         <Route path="/mensaje-enviado" element={<MensajeEnviado />} />
       </Routes>

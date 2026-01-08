@@ -5,18 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="noindex" />
     <title>Panel de Administración - Daniel Publicidad</title>
+    
+    <!-- Netlify Identity -->
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    
+    <!-- CSS Personalizado -->
+    <link rel="stylesheet" href="/admin/custom.css" />
+    
     <style>
+      /* Estilos inline adicionales */
       body {
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        margin: 0;
+        padding: 0;
       }
     </style>
   </head>
   <body>
-    <!-- Usar Netlify CMS versión estable en lugar de Decap -->
+    <!-- Netlify CMS -->
     <script src="https://unpkg.com/netlify-cms@^2.10.192/dist/netlify-cms.js"></script>
+    
     <script>
-      // Limpiar estado del CMS al cargar si hay errores
+      // Limpiar caché si hay errores
       if (window.localStorage) {
         const hasError = window.location.hash.includes('error');
         if (hasError) {
@@ -26,7 +36,6 @@
               localStorage.removeItem(key);
             }
           });
-          // Recargar sin el hash de error
           window.location.hash = '';
           window.location.reload();
         }

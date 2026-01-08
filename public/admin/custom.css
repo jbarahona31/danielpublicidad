@@ -1,0 +1,317 @@
+/* ============================================
+   🎨 PERSONALIZACIÓN PANEL DE ADMINISTRACIÓN
+   Daniel Publicidad - Diseño Moderno
+   ============================================ */
+
+:root {
+  --amarillo-principal: #fbbf24;
+  --amarillo-hover: #f59e0b;
+  --negro-principal: #1f2937;
+  --gris-oscuro: #374151;
+  --azul-uniformes: #3b82f6;
+  --verde-gorras: #10b981;
+  --naranja-posillos: #f97316;
+  --morado-estampados: #8b5cf6;
+}
+
+/* ============================================
+   HEADER PRINCIPAL
+   ============================================ */
+[class*="AppHeader-"] {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
+  padding: 1.5rem 2rem !important;
+}
+
+[class*="AppHeader-"] h1,
+[class*="AppHeader-"] a {
+  color: white !important;
+  font-weight: 600 !important;
+}
+
+/* Logo personalizado */
+[class*="AppHeader-"]::before {
+  content: "🎨 ";
+  font-size: 2rem;
+  margin-right: 0.5rem;
+}
+
+/* ============================================
+   SIDEBAR - COLECCIONES
+   ============================================ */
+[class*="Sidebar-"] {
+  background: var(--negro-principal) !important;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1) !important;
+}
+
+[class*="SidebarContainer-"] {
+  padding: 1.5rem 1rem !important;
+}
+
+/* Título "Collections" */
+[class*="Sidebar-"] h2 {
+  color: white !important;
+  font-size: 0.875rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  margin-bottom: 1rem !important;
+  opacity: 0.7 !important;
+}
+
+/* Cada item de colección */
+[class*="CollectionLink-"],
+[class*="SidebarLink-"] {
+  margin-bottom: 0.5rem !important;
+  border-radius: 8px !important;
+  transition: all 0.3s ease !important;
+  padding: 0.75rem 1rem !important;
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+[class*="CollectionLink-"]:hover,
+[class*="SidebarLink-"]:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  transform: translateX(4px) !important;
+  color: white !important;
+}
+
+/* Item activo */
+[class*="CollectionLink-"][class*="active"],
+[class*="SidebarLink-"][class*="active"] {
+  background: var(--amarillo-principal) !important;
+  color: var(--negro-principal) !important;
+  font-weight: 600 !important;
+}
+
+/* Iconos personalizados por categoría */
+[class*="CollectionLink-"]::before {
+  font-size: 1.5rem;
+  margin-right: 0.75rem;
+}
+
+/* Uniformes */
+[class*="CollectionLink-"][href*="uniformes"]::before {
+  content: "👕";
+}
+
+/* Gorras */
+[class*="CollectionLink-"][href*="gorras"]::before {
+  content: "🧢";
+}
+
+/* Posillos */
+[class*="CollectionLink-"][href*="posillos"]::before {
+  content: "☕";
+}
+
+/* Estampados */
+[class*="CollectionLink-"][href*="estampados"]::before {
+  content: "🎨";
+}
+
+/* ============================================
+   ÁREA DE CONTENIDO PRINCIPAL
+   ============================================ */
+[class*="MainView-"] {
+  background: #f9fafb !important;
+}
+
+/* Título de la colección */
+[class*="CollectionTop-"] h1,
+[class*="ViewControlsContainer-"] h1 {
+  color: var(--negro-principal) !important;
+  font-size: 2rem !important;
+  font-weight: 700 !important;
+  margin-bottom: 1.5rem !important;
+}
+
+/* ============================================
+   BOTONES
+   ============================================ */
+
+/* Botón "New [Categoría]" */
+[class*="ControlButton-"],
+button[class*="Button-primary"] {
+  background: var(--amarillo-principal) !important;
+  color: var(--negro-principal) !important;
+  border: none !important;
+  border-radius: 10px !important;
+  padding: 0.875rem 1.75rem !important;
+  font-weight: 600 !important;
+  font-size: 1rem !important;
+  box-shadow: 0 4px 15px rgba(251, 191, 36, 0.3) !important;
+  transition: all 0.3s ease !important;
+  cursor: pointer !important;
+}
+
+[class*="ControlButton-"]:hover,
+button[class*="Button-primary"]:hover {
+  background: var(--amarillo-hover) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 20px rgba(251, 191, 36, 0.4) !important;
+}
+
+/* Botón "Publish" */
+button[class*="Button-"][class*="success"],
+button:contains("Publish") {
+  background: #10b981 !important;
+  color: white !important;
+}
+
+/* Botones secundarios */
+button[class*="Button-secondary"] {
+  background: white !important;
+  border: 2px solid #e5e7eb !important;
+  color: var(--gris-oscuro) !important;
+  border-radius: 10px !important;
+  padding: 0.875rem 1.5rem !important;
+  font-weight: 600 !important;
+  transition: all 0.3s ease !important;
+}
+
+button[class*="Button-secondary"]:hover {
+  border-color: var(--amarillo-principal) !important;
+  color: var(--amarillo-principal) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* ============================================
+   TARJETAS/CARDS DE CONTENIDO
+   ============================================ */
+[class*="ListCard-"],
+[class*="Card-"] {
+  border-radius: 12px !important;
+  border: 1px solid #e5e7eb !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05) !important;
+  transition: all 0.3s ease !important;
+  background: white !important;
+}
+
+[class*="ListCard-"]:hover,
+[class*="Card-"]:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1) !important;
+  transform: translateY(-4px) !important;
+  border-color: var(--amarillo-principal) !important;
+}
+
+/* ============================================
+   FORMULARIOS
+   ============================================ */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea,
+select {
+  border: 2px solid #e5e7eb !important;
+  border-radius: 8px !important;
+  padding: 0.75rem 1rem !important;
+  font-size: 1rem !important;
+  transition: all 0.3s ease !important;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none !important;
+  border-color: var(--amarillo-principal) !important;
+  box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.1) !important;
+}
+
+/* Widget de imagen */
+[class*="ImageUpload-"],
+[class*="FileUpload-"] {
+  border: 3px dashed #e5e7eb !important;
+  border-radius: 12px !important;
+  padding: 2rem !important;
+  background: #f9fafb !important;
+  transition: all 0.3s ease !important;
+}
+
+[class*="ImageUpload-"]:hover,
+[class*="FileUpload-"]:hover {
+  border-color: var(--amarillo-principal) !important;
+  background: #fffbeb !important;
+}
+
+/* ============================================
+   MENSAJE "NO ENTRIES"
+   ============================================ */
+[class*="NoEntries-"],
+[class*="EmptyMessage-"] {
+  text-align: center !important;
+  padding: 4rem 2rem !important;
+  color: #6b7280 !important;
+}
+
+[class*="NoEntries-"]::before,
+[class*="EmptyMessage-"]::before {
+  content: "📸";
+  font-size: 4rem;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+/* ============================================
+   BADGES Y ETIQUETAS
+   ============================================ */
+[class*="Badge-"],
+[class*="StatusBadge-"] {
+  border-radius: 20px !important;
+  padding: 0.25rem 0.75rem !important;
+  font-size: 0.875rem !important;
+  font-weight: 600 !important;
+}
+
+/* ============================================
+   ANIMACIONES
+   ============================================ */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+[class*="ListCard-"],
+[class*="Card-"] {
+  animation: fadeIn 0.4s ease-out !important;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+  [class*="AppHeader-"] {
+    padding: 1rem !important;
+  }
+  
+  [class*="ControlButton-"] {
+    width: 100% !important;
+    margin-bottom: 0.5rem !important;
+  }
+}
+
+/* ============================================
+   SCROLLBAR PERSONALIZADO
+   ============================================ */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--amarillo-principal);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--amarillo-hover);
+}
