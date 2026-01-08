@@ -1,14 +1,11 @@
 import { Link } from "react-router-dom";
-import Gallery from "../components/Gallery";
+import ImageGallery from "../components/ImageGallery";
 
 export default function Gorras() {
   return (
     <main>
       <h1>Gorras Personalizadas</h1>
-      <Gallery images={[
-        "/images/gorras/1.jpg",
-        "/images/gorras/2.jpg"
-      ]} />
+      <ImageGallery category="gorras" title="Nuestras Gorras" />
       <Link to="/contacto" className="button">Cotizar gorras</Link>
     </main>
   );
