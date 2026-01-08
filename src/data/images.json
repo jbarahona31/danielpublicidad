@@ -1,5 +1,11 @@
 {
-  "uniformes": [],
+  "uniformes": [
+    {
+      "src": "/images/uniformes/2.jpg",
+      "alt": "2",
+      "name": "2.jpg"
+    }
+  ],
   "gorras": [
     {
       "src": "/images/gorras/1.jpg",

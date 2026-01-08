@@ -9,6 +9,7 @@ import Estampados from "./pages/Estampados";
 import Gorras from "./pages/Gorras";
 import Vasos from "./pages/Vasos";
 import Contacto from "./pages/Contacto";
+import MensajeEnviado from "./pages/MensajeEnviado";
 
 export default function App() {
   return (
@@ -22,6 +23,7 @@ export default function App() {
         <Route path="/gorras" element={<Gorras />} />
         <Route path="/vasos" element={<Vasos />} />
         <Route path="/contacto" element={<Contacto />} />
+        <Route path="/mensaje-enviado" element={<MensajeEnviado />} />
       </Routes>
 
       <Footer />
