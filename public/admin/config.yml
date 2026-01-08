@@ -10,38 +10,50 @@ collections:
     label: "Uniformes"
     folder: "public/images/uniformes"
     create: true
-    extension: "json"
+    media_folder: ""
+    public_folder: ""
+    extension: "md"
+    format: "frontmatter"
     fields:
-      - { label: "Nombre", name: "title", widget: "string" }
       - { label: "Imagen", name: "image", widget: "image" }
+      - { label: "Nombre", name: "title", widget: "string", required: false }
       - { label: "Descripción", name: "description", widget: "text", required: false }
 
   - name: "estampados"
     label: "Estampados"
     folder: "public/images/estampados"
     create: true
-    extension: "json"
+    media_folder: ""
+    public_folder: ""
+    extension: "md"
+    format: "frontmatter"
     fields:
-      - { label: "Nombre", name: "title", widget: "string" }
       - { label: "Imagen", name: "image", widget: "image" }
+      - { label: "Nombre", name: "title", widget: "string", required: false }
       - { label: "Descripción", name: "description", widget: "text", required: false }
 
   - name: "gorras"
     label: "Gorras"
     folder: "public/images/gorras"
     create: true
-    extension: "json"
+    media_folder: ""
+    public_folder: ""
+    extension: "md"
+    format: "frontmatter"
     fields:
-      - { label: "Nombre", name: "title", widget: "string" }
       - { label: "Imagen", name: "image", widget: "image" }
+      - { label: "Nombre", name: "title", widget: "string", required: false }
       - { label: "Descripción", name: "description", widget: "text", required: false }
 
   - name: "vasos"
     label: "Vasos"
     folder: "public/images/vasos"
     create: true
-    extension: "json"
+    media_folder: ""
+    public_folder: ""
+    extension: "md"
+    format: "frontmatter"
     fields:
-      - { label: "Nombre", name: "title", widget: "string" }
       - { label: "Imagen", name: "image", widget: "image" }
+      - { label: "Nombre", name: "title", widget: "string", required: false }
       - { label: "Descripción", name: "description", widget: "text", required: false }

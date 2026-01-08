@@ -1,14 +1,11 @@
 import { Link } from "react-router-dom";
-import Gallery from "../components/Gallery";
+import ImageGallery from "../components/ImageGallery";
 
 export default function Vasos() {
   return (
     <main>
       <h1>Vasos Personalizados</h1>
-      <Gallery images={[
-        "/images/vasos/1.jpg",
-        "/images/vasos/2.jpg"
-      ]} />
+      <ImageGallery category="vasos" title="Nuestros Vasos" />
       <Link to="/contacto" className="button">Cotizar vasos</Link>
     </main>
   );
