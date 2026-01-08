@@ -7,17 +7,29 @@ Sitio web corporativo para Daniel Publicidad, especialistas en uniformes deporti
 - **React 19** - Biblioteca de interfaz de usuario
 - **Vite** - Herramienta de construcción y desarrollo
 - **React Router** - Navegación entre páginas
+- **Decap CMS** - Sistema de gestión de contenido
+- **Netlify Identity** - Sistema de autenticación
 
 ## 📦 Estructura del Proyecto
 
 ```
 danielpublicidad/
 ├── public/
+│   ├── admin/              # Panel de administración
+│   │   ├── index.html
+│   │   └── config.yml
+│   ├── images/             # Imágenes gestionadas por CMS
+│   │   ├── uniformes/
+│   │   ├── estampados/
+│   │   ├── gorras/
+│   │   └── vasos/
 │   └── logo.png
 ├── src/
 │   ├── components/
 │   │   ├── Navbar.jsx
-│   │   └── Footer.jsx
+│   │   ├── Footer.jsx
+│   │   ├── Gallery.jsx
+│   │   └── WhatsAppButton.jsx
 │   ├── pages/
 │   │   ├── Home.jsx
 │   │   ├── Uniformes.jsx
@@ -29,6 +41,7 @@ danielpublicidad/
 │   │   └── global.css
 │   ├── App.jsx
 │   └── main.jsx
+├── ADMIN_SETUP.md          # Instrucciones de configuración del admin
 └── package.json
 ```
 
@@ -66,3 +79,8 @@ npm run lint
 - **Gorras** - Gorras personalizadas
 - **Vasos** - Vasos y pocillos publicitarios
 - **Contacto** - Información de contacto
+
+## 🔐 Panel de Administración
+
+El sitio incluye un panel de administración en `/admin` para gestionar imágenes de productos. Ver [ADMIN_SETUP.md](./ADMIN_SETUP.md) para instrucciones de configuración.
+
