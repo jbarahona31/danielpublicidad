@@ -100,8 +100,7 @@
 }
 
 /* Posillos */
-[class*="CollectionLink-"][href*="posillos"]::before,
-[class*="CollectionLink-"][href*="vasos"]::before {
+[class*="CollectionLink-"][href*="posillos"]::before {
   content: "☕";
 }
 

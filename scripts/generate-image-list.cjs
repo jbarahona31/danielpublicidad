@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const categories = ['uniformes', 'gorras', 'vasos', 'estampados'];
+const categories = ['uniformes', 'gorras', 'posillos', 'estampados'];
 const imageExtensions = ['.png', '.jpg', '.jpeg', '.webp', '.gif'];
 
 const images = {};
