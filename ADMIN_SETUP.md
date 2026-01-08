@@ -1,6 +1,46 @@
-# Configuración del Panel de Administración
+# 📸 Cómo Subir Imágenes
 
-## Pasos para activar el login de administrador:
+## Paso a paso:
+
+1. **Accede al panel**
+   - Ve a: `https://tu-sitio.netlify.app/admin`
+   - Inicia sesión con tu email y contraseña
+
+2. **Selecciona una categoría**
+   - Click en: Uniformes, Gorras, Vasos o Estampados
+
+3. **Crea una nueva entrada**
+   - Click en el botón "New [Categoría]" (ej: "New Uniforme")
+
+4. **Sube tu imagen**
+   - Verás un campo grande que dice "Imagen del Producto"
+   - Arrastra la imagen desde tu computadora
+   - O haz click para seleccionarla desde tus archivos
+
+5. **Agrega información (opcional)**
+   - Nombre del Producto: Dale un nombre descriptivo
+   - Descripción: Agrega detalles si quieres
+
+6. **Publica**
+   - Click en "Publish" en la esquina superior derecha
+   - ¡Tu imagen aparecerá automáticamente en la web!
+
+## ✅ Formatos de imagen soportados:
+- JPG / JPEG
+- PNG
+- WEBP
+- GIF
+
+## 💡 Consejos:
+- Usa imágenes de buena calidad
+- Tamaño recomendado: 800x800px o mayor
+- Peso recomendado: menos de 2MB por imagen
+
+---
+
+## Configuración del Panel de Administración
+
+### Pasos para activar el login de administrador:
 
 1. Ir al panel de Netlify → **Site settings**
 2. **Identity** → Click en "Enable Identity"
@@ -9,30 +49,4 @@
 5. **Identity** → **Invite users** → Agregar tu email
 6. Revisar tu correo y aceptar la invitación
 7. Acceder a: `https://tu-sitio.netlify.app/admin`
-
-## Cómo subir imágenes:
-
-1. Accede a `/admin`
-2. Selecciona la categoría (Uniformes, Gorras, Vasos, Estampados)
-3. Click en "New [Categoría]"
-4. Arrastra y suelta tu imagen o haz click para seleccionarla
-5. (Opcional) Agrega un nombre o descripción
-6. Click en "Publish"
-7. ¡La imagen aparece inmediatamente en la web!
-
-## Formatos soportados:
-- PNG
-- JPG/JPEG
-- WEBP
-- GIF
-
-## Características del nuevo sistema:
-
-✅ **Simplificado**: Solo arrastras y sueltas fotos  
-✅ **Automático**: Las imágenes se guardan directamente en las carpetas  
-✅ **Sin JSON**: No necesitas archivos intermedios  
-✅ **Inmediato**: Aparecen automáticamente en la web  
-✅ **Moderno**: Galerías responsive con efectos hover elegantes  
-✅ **Optimizado**: Carga rápida con lazy loading  
-✅ **Compatible**: Funciona con todos los formatos de imagen comunes
 
