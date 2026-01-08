@@ -1,6 +1,8 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function Contacto() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     nombre: '',
     telefono: '',
@@ -9,6 +11,7 @@ export default function Contacto() {
   
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -47,7 +50,7 @@ export default function Contacto() {
     return newErrors;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     
     const newErrors = validateForm();
@@ -58,9 +61,26 @@ export default function Contacto() {
     }
     
     setIsSubmitting(true);
+    setSubmitError('');
     
-    // Let Netlify Forms handle the submission
-    e.target.submit();
+    // Submit form using fetch API to avoid POST in browser history
+    const form = e.target;
+    const formData = new FormData(form);
+    
+    try {
+      await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData).toString()
+      });
+      
+      // Navigate with replace: true to avoid POST in history
+      navigate('/mensaje-enviado', { replace: true });
+    } catch (error) {
+      console.error('Error:', error);
+      setSubmitError('Hubo un error al enviar el mensaje. Por favor intenta de nuevo.');
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -164,6 +184,21 @@ export default function Contacto() {
             </span>
           )}
         </div>
+
+        {submitError && (
+          <div style={{ 
+            color: '#e74c3c', 
+            backgroundColor: 'rgba(231, 76, 60, 0.1)',
+            border: '2px solid #e74c3c',
+            borderRadius: '8px',
+            padding: '12px 16px',
+            marginBottom: '20px',
+            fontSize: '14px',
+            fontWeight: '500'
+          }}>
+            {submitError}
+          </div>
+        )}
 
         <button 
           type="submit" 

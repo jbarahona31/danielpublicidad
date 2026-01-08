@@ -1,133 +1,63 @@
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import './MensajeEnviado.css';
 
-export default function MensajeEnviado() {
+const AUTO_REDIRECT_DELAY = 10000; // 10 seconds
+
+const MensajeEnviado = () => {
   const navigate = useNavigate();
 
+  // Opcional: Redirección automática después de 10 segundos
   useEffect(() => {
-    // Redirect to home after 5 seconds
     const timer = setTimeout(() => {
       navigate('/');
-    }, 5000);
+    }, AUTO_REDIRECT_DELAY);
 
     return () => clearTimeout(timer);
   }, [navigate]);
 
   return (
-    <main style={{ 
-      minHeight: 'calc(100vh - var(--navbar-height) - var(--footer-height))',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      padding: '40px 20px'
-    }}>
-      <div style={{
-        background: 'rgba(250, 204, 21, 0.05)',
-        borderRadius: '20px',
-        padding: '60px 40px',
-        maxWidth: '600px',
-        width: '100%',
-        textAlign: 'center',
-        border: '2px solid rgba(250, 204, 21, 0.3)',
-        boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3)',
-        animation: 'fadeInUp 0.5s ease'
-      }}>
-        <div style={{ 
-          fontSize: '80px', 
-          marginBottom: '20px',
-          animation: 'scaleIn 0.5s ease 0.2s both'
-        }}>
-          ✅
+    <div className="mensaje-enviado-container">
+      <div className="mensaje-enviado-content">
+        <div className="success-animation">
+          <div className="success-circle">
+            <div className="success-checkmark">
+              <svg viewBox="0 0 52 52" className="checkmark">
+                <circle className="checkmark-circle" cx="26" cy="26" r="25" fill="none"/>
+                <path className="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+              </svg>
+            </div>
+          </div>
         </div>
+
+        <h1 className="mensaje-titulo">¡Mensaje Enviado!</h1>
         
-        <h1 style={{ 
-          fontSize: '36px', 
-          color: '#27ae60', 
-          marginBottom: '20px',
-          fontWeight: '700'
-        }}>
-          ¡Mensaje Enviado!
-        </h1>
-        
-        <p style={{ 
-          fontSize: '18px', 
-          color: '#e5e5e5', 
-          marginBottom: '40px',
-          lineHeight: '1.6'
-        }}>
-          Gracias por contactarnos. Hemos recibido tu mensaje y te responderemos pronto.
+        <p className="mensaje-texto">
+          Gracias por contactarnos. Hemos recibido tu mensaje correctamente.
         </p>
         
-        <div style={{ 
-          display: 'flex', 
-          gap: '15px', 
-          justifyContent: 'center',
-          flexWrap: 'wrap',
-          marginBottom: '30px'
-        }}>
-          <button 
-            onClick={() => navigate('/')} 
-            className="button primary"
-            style={{ margin: 0 }}
-          >
+        <p className="mensaje-subtexto">
+          Nuestro equipo te responderá lo más pronto posible.
+        </p>
+
+        <div className="mensaje-acciones">
+          <Link to="/" className="btn-primary">
+            <span className="btn-icon">🏠</span>
             Volver al Inicio
-          </button>
-          <button 
-            onClick={() => navigate('/contacto')} 
-            style={{
-              padding: '14px 32px',
-              background: 'transparent',
-              color: '#facc15',
-              border: '2px solid #facc15',
-              borderRadius: '50px',
-              fontWeight: '600',
-              fontSize: '16px',
-              cursor: 'pointer',
-              transition: 'all 0.3s ease'
-            }}
-            onMouseOver={(e) => {
-              e.currentTarget.style.background = '#facc15';
-              e.currentTarget.style.color = '#000';
-            }}
-            onMouseOut={(e) => {
-              e.currentTarget.style.background = 'transparent';
-              e.currentTarget.style.color = '#facc15';
-            }}
-          >
-            Enviar Otro Mensaje
-          </button>
+          </Link>
+          
+          <Link to="/uniformes" className="btn-secondary">
+            <span className="btn-icon">👕</span>
+            Ver Productos
+          </Link>
         </div>
-        
-        <p style={{ 
-          color: '#999', 
-          fontSize: '14px',
-          fontStyle: 'italic'
-        }}>
-          Serás redirigido automáticamente en 5 segundos...
-        </p>
+
+        <div className="mensaje-footer">
+          <p>Serás redirigido al inicio en unos segundos...</p>
+        </div>
       </div>
-
-      <style>{`
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        @keyframes scaleIn {
-          from {
-            transform: scale(0);
-          }
-          to {
-            transform: scale(1);
-          }
-        }
-      `}</style>
-    </main>
+    </div>
   );
-}
+};
+
+export default MensajeEnviado;
