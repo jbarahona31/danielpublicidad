@@ -1,13 +1,20 @@
 /* ============================================
-   🎨 PERSONALIZACIÓN PANEL DE ADMINISTRACIÓN
-   Daniel Publicidad - Diseño Moderno
+   🎨 PERSONALIZACIÓN COMPLETA - DANIEL PUBLICIDAD
+   Panel de Administración
    ============================================ */
 
 :root {
   --amarillo-principal: #fbbf24;
   --amarillo-hover: #f59e0b;
+  --amarillo-claro: #fef3c7;
   --negro-principal: #1f2937;
+  --negro-oscuro: #111827;
   --gris-oscuro: #374151;
+  --gris-medio: #6b7280;
+  --gris-claro: #f3f4f6;
+  --blanco: #ffffff;
+  
+  /* Colores por categoría */
   --azul-uniformes: #3b82f6;
   --verde-gorras: #10b981;
   --naranja-posillos: #f97316;
@@ -15,153 +22,289 @@
 }
 
 /* ============================================
-   HEADER PRINCIPAL
+   RESET Y BASE
    ============================================ */
-[class*="AppHeader-"] {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
-  padding: 1.5rem 2rem !important;
+* {
+  box-sizing: border-box;
 }
 
-[class*="AppHeader-"] h1,
-[class*="AppHeader-"] a {
-  color: white !important;
-  font-weight: 600 !important;
-}
-
-/* Logo personalizado */
-[class*="AppHeader-"]::before {
-  content: "🎨 ";
-  font-size: 2rem;
-  margin-right: 0.5rem;
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
 }
 
 /* ============================================
-   SIDEBAR - COLECCIONES
+   HEADER PRINCIPAL - CON LOGO
    ============================================ */
-[class*="Sidebar-"] {
-  background: var(--negro-principal) !important;
-  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1) !important;
+[class*="AppHeader-"],
+header[class*="TopBar"],
+[role="banner"] {
+  background: linear-gradient(135deg, var(--negro-principal) 0%, var(--negro-oscuro) 100%) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+  padding: 1rem 2rem !important;
+  min-height: 80px !important;
+  display: flex !important;
+  align-items: center !important;
 }
 
+/* Asegurar que el logo sea visible */
+#admin-logo-container {
+  display: flex !important;
+  align-items: center !important;
+  gap: 1rem !important;
+  margin-right: auto !important;
+  z-index: 10 !important;
+}
+
+#admin-logo {
+  height: 50px !important;
+  width: auto !important;
+  max-width: 180px !important;
+  object-fit: contain !important;
+  filter: brightness(1.1) !important;
+}
+
+/* Títulos en el header */
+[class*="AppHeader-"] h1,
+[class*="AppHeader-"] h2,
+[class*="TopBar"] h1,
+[class*="TopBar"] h2 {
+  color: white !important;
+  font-weight: 700 !important;
+  margin: 0 !important;
+}
+
+/* Botones del header */
+[class*="AppHeader-"] button,
+[class*="TopBar"] button {
+  background: var(--amarillo-principal) !important;
+  color: var(--negro-principal) !important;
+  border: none !important;
+  border-radius: 8px !important;
+  padding: 0.5rem 1.25rem !important;
+  font-weight: 600 !important;
+  transition: all 0.3s ease !important;
+}
+
+[class*="AppHeader-"] button:hover,
+[class*="TopBar"] button:hover {
+  background: var(--amarillo-hover) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* ============================================
+   SIDEBAR - ESTILO MODERNO
+   ============================================ */
+[class*="Sidebar-"],
+aside[class*="SidebarContainer"] {
+  background: var(--negro-principal) !important;
+  box-shadow: 4px 0 15px rgba(0, 0, 0, 0.2) !important;
+  padding: 1.5rem 0 !important;
+}
+
+/* Contenedor del sidebar */
 [class*="SidebarContainer-"] {
-  padding: 1.5rem 1rem !important;
+  padding: 0 1rem !important;
 }
 
 /* Título "Collections" */
-[class*="Sidebar-"] h2 {
-  color: white !important;
-  font-size: 0.875rem !important;
+[class*="Sidebar-"] h2,
+[class*="CollectionsContainer"] > div:first-child {
+  color: var(--amarillo-principal) !important;
+  font-size: 0.75rem !important;
   text-transform: uppercase !important;
-  letter-spacing: 1px !important;
-  margin-bottom: 1rem !important;
-  opacity: 0.7 !important;
+  letter-spacing: 2px !important;
+  margin: 1rem 0 0.75rem 1rem !important;
+  opacity: 1 !important;
+  font-weight: 700 !important;
 }
 
-/* Cada item de colección */
-[class*="CollectionLink-"],
-[class*="SidebarLink-"] {
-  margin-bottom: 0.5rem !important;
-  border-radius: 8px !important;
-  transition: all 0.3s ease !important;
-  padding: 0.75rem 1rem !important;
-  color: rgba(255, 255, 255, 0.8) !important;
-}
-
-[class*="CollectionLink-"]:hover,
-[class*="SidebarLink-"]:hover {
+/* Buscador */
+[class*="Sidebar-"] input[type="search"],
+[class*="SearchInput"] {
   background: rgba(255, 255, 255, 0.1) !important;
-  transform: translateX(4px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 8px !important;
+  padding: 0.625rem 1rem !important;
   color: white !important;
+  margin: 0 1rem 1rem 1rem !important;
+  font-size: 0.875rem !important;
 }
 
-/* Item activo */
+[class*="Sidebar-"] input[type="search"]::placeholder,
+[class*="SearchInput"]::placeholder {
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+
+[class*="Sidebar-"] input[type="search"]:focus,
+[class*="SearchInput"]:focus {
+  outline: none !important;
+  border-color: var(--amarillo-principal) !important;
+  background: rgba(255, 255, 255, 0.15) !important;
+}
+
+/* Items de colección */
+[class*="CollectionLink-"],
+[class*="SidebarLink-"],
+nav[class*="SidebarNav"] a {
+  display: flex !important;
+  align-items: center !important;
+  margin: 0.25rem 1rem !important;
+  border-radius: 10px !important;
+  transition: all 0.3s ease !important;
+  padding: 0.875rem 1rem !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+  text-decoration: none !important;
+  font-size: 0.9375rem !important;
+  font-weight: 500 !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+/* Efecto hover */
+[class*="CollectionLink-"]:hover,
+[class*="SidebarLink-"]:hover,
+nav[class*="SidebarNav"] a:hover {
+  background: rgba(251, 191, 36, 0.15) !important;
+  color: var(--amarillo-principal) !important;
+  transform: translateX(5px) !important;
+  padding-left: 1.25rem !important;
+}
+
+/* Item activo/seleccionado */
 [class*="CollectionLink-"][class*="active"],
-[class*="SidebarLink-"][class*="active"] {
+[class*="SidebarLink-"][class*="active"],
+nav[class*="SidebarNav"] a[class*="active"],
+nav[class*="SidebarNav"] a.active {
   background: var(--amarillo-principal) !important;
   color: var(--negro-principal) !important;
-  font-weight: 600 !important;
+  font-weight: 700 !important;
+  box-shadow: 0 4px 15px rgba(251, 191, 36, 0.3) !important;
+}
+
+[class*="CollectionLink-"][class*="active"]:hover,
+nav[class*="SidebarNav"] a[class*="active"]:hover {
+  background: var(--amarillo-hover) !important;
+  transform: translateX(5px) scale(1.02) !important;
 }
 
 /* Iconos personalizados por categoría */
-[class*="CollectionLink-"]::before {
+[class*="CollectionLink-"]::before,
+nav[class*="SidebarNav"] a::before {
+  content: "📁";
   font-size: 1.5rem;
   margin-right: 0.75rem;
+  display: inline-block;
 }
 
 /* Uniformes */
-[class*="CollectionLink-"][href*="uniformes"]::before {
+[class*="CollectionLink-"][href*="uniformes"]::before,
+nav[class*="SidebarNav"] a[href*="uniformes"]::before {
   content: "👕";
 }
 
 /* Gorras */
-[class*="CollectionLink-"][href*="gorras"]::before {
+[class*="CollectionLink-"][href*="gorras"]::before,
+nav[class*="SidebarNav"] a[href*="gorras"]::before {
   content: "🧢";
 }
 
 /* Posillos */
-[class*="CollectionLink-"][href*="posillos"]::before {
+[class*="CollectionLink-"][href*="posillos"]::before,
+[class*="CollectionLink-"][href*="vasos"]::before,
+nav[class*="SidebarNav"] a[href*="posillos"]::before {
   content: "☕";
 }
 
 /* Estampados */
-[class*="CollectionLink-"][href*="estampados"]::before {
+[class*="CollectionLink-"][href*="estampados"]::before,
+nav[class*="SidebarNav"] a[href*="estampados"]::before {
   content: "🎨";
 }
 
 /* ============================================
    ÁREA DE CONTENIDO PRINCIPAL
    ============================================ */
-[class*="MainView-"] {
-  background: #f9fafb !important;
+[class*="MainView-"],
+main {
+  background: var(--gris-claro) !important;
+  min-height: 100vh !important;
+}
+
+/* Contenedor principal */
+[class*="CollectionMain-"],
+[class*="ViewContainer-"] {
+  padding: 2rem !important;
 }
 
 /* Título de la colección */
 [class*="CollectionTop-"] h1,
-[class*="ViewControlsContainer-"] h1 {
+[class*="ViewControlsContainer-"] h1,
+main h1 {
   color: var(--negro-principal) !important;
-  font-size: 2rem !important;
-  font-weight: 700 !important;
+  font-size: 2.25rem !important;
+  font-weight: 800 !important;
   margin-bottom: 1.5rem !important;
+  position: relative !important;
+  padding-bottom: 1rem !important;
+}
+
+[class*="CollectionTop-"] h1::after,
+main h1::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 4px;
+  background: var(--amarillo-principal);
+  border-radius: 2px;
 }
 
 /* ============================================
-   BOTONES
+   BOTONES PRINCIPALES
    ============================================ */
 
 /* Botón "New [Categoría]" */
 [class*="ControlButton-"],
-button[class*="Button-primary"] {
+button[class*="Button-primary"],
+button[class*="StyledButton"]:first-of-type {
   background: var(--amarillo-principal) !important;
   color: var(--negro-principal) !important;
   border: none !important;
-  border-radius: 10px !important;
-  padding: 0.875rem 1.75rem !important;
-  font-weight: 600 !important;
+  border-radius: 12px !important;
+  padding: 1rem 2rem !important;
+  font-weight: 700 !important;
   font-size: 1rem !important;
-  box-shadow: 0 4px 15px rgba(251, 191, 36, 0.3) !important;
+  box-shadow: 0 4px 15px rgba(251, 191, 36, 0.4) !important;
   transition: all 0.3s ease !important;
   cursor: pointer !important;
+  text-transform: none !important;
+  letter-spacing: 0.5px !important;
 }
 
 [class*="ControlButton-"]:hover,
 button[class*="Button-primary"]:hover {
   background: var(--amarillo-hover) !important;
-  transform: translateY(-2px) !important;
-  box-shadow: 0 6px 20px rgba(251, 191, 36, 0.4) !important;
+  transform: translateY(-3px) !important;
+  box-shadow: 0 8px 25px rgba(251, 191, 36, 0.5) !important;
 }
 
 /* Botón "Publish" */
 button[class*="Button-"][class*="success"],
-button:contains("Publish") {
+button:contains("Publish"),
+button[style*="rgb(0, 168, 126)"] {
   background: #10b981 !important;
   color: white !important;
+  border-radius: 10px !important;
 }
 
 /* Botones secundarios */
-button[class*="Button-secondary"] {
+button[class*="Button-secondary"],
+button[class*="Button-"][class*="default"] {
   background: white !important;
-  border: 2px solid #e5e7eb !important;
+  border: 2px solid var(--gris-claro) !important;
   color: var(--gris-oscuro) !important;
   border-radius: 10px !important;
   padding: 0.875rem 1.5rem !important;
@@ -172,41 +315,60 @@ button[class*="Button-secondary"] {
 button[class*="Button-secondary"]:hover {
   border-color: var(--amarillo-principal) !important;
   color: var(--amarillo-principal) !important;
-  transform: translateY(-1px) !important;
+  background: var(--amarillo-claro) !important;
+  transform: translateY(-2px) !important;
 }
 
 /* ============================================
    TARJETAS/CARDS DE CONTENIDO
    ============================================ */
 [class*="ListCard-"],
-[class*="Card-"] {
-  border-radius: 12px !important;
-  border: 1px solid #e5e7eb !important;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05) !important;
-  transition: all 0.3s ease !important;
+[class*="Card-"],
+[class*="EntryCard"] {
+  border-radius: 16px !important;
+  border: 2px solid #e5e7eb !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+  transition: all 0.4s ease !important;
   background: white !important;
+  overflow: hidden !important;
 }
 
 [class*="ListCard-"]:hover,
-[class*="Card-"]:hover {
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1) !important;
-  transform: translateY(-4px) !important;
+[class*="Card-"]:hover,
+[class*="EntryCard"]:hover {
+  box-shadow: 0 12px 35px rgba(251, 191, 36, 0.25) !important;
+  transform: translateY(-6px) !important;
   border-color: var(--amarillo-principal) !important;
 }
 
+/* Imagen dentro de la card */
+[class*="ListCard-"] img,
+[class*="Card-"] img {
+  border-radius: 12px !important;
+  transition: transform 0.4s ease !important;
+}
+
+[class*="ListCard-"]:hover img,
+[class*="Card-"]:hover img {
+  transform: scale(1.05) !important;
+}
+
 /* ============================================
-   FORMULARIOS
+   FORMULARIOS Y CAMPOS
    ============================================ */
 input[type="text"],
 input[type="email"],
 input[type="tel"],
+input[type="url"],
+input[type="number"],
 textarea,
 select {
   border: 2px solid #e5e7eb !important;
-  border-radius: 8px !important;
-  padding: 0.75rem 1rem !important;
+  border-radius: 10px !important;
+  padding: 0.875rem 1rem !important;
   font-size: 1rem !important;
   transition: all 0.3s ease !important;
+  background: white !important;
 }
 
 input:focus,
@@ -214,61 +376,145 @@ textarea:focus,
 select:focus {
   outline: none !important;
   border-color: var(--amarillo-principal) !important;
-  box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.1) !important;
+  box-shadow: 0 0 0 4px rgba(251, 191, 36, 0.15) !important;
+  background: var(--amarillo-claro) !important;
 }
 
-/* Widget de imagen */
+/* Labels */
+label {
+  color: var(--negro-principal) !important;
+  font-weight: 600 !important;
+  margin-bottom: 0.5rem !important;
+  display: block !important;
+}
+
+/* Widget de imagen/archivo */
 [class*="ImageUpload-"],
-[class*="FileUpload-"] {
-  border: 3px dashed #e5e7eb !important;
-  border-radius: 12px !important;
-  padding: 2rem !important;
-  background: #f9fafb !important;
+[class*="FileUpload-"],
+[class*="FileWidgetButton"] {
+  border: 3px dashed #d1d5db !important;
+  border-radius: 16px !important;
+  padding: 3rem 2rem !important;
+  background: #fafafa !important;
   transition: all 0.3s ease !important;
+  text-align: center !important;
 }
 
 [class*="ImageUpload-"]:hover,
-[class*="FileUpload-"]:hover {
+[class*="FileUpload-"]:hover,
+[class*="FileWidgetButton"]:hover {
   border-color: var(--amarillo-principal) !important;
-  background: #fffbeb !important;
+  background: var(--amarillo-claro) !important;
+  cursor: pointer !important;
+}
+
+[class*="ImageUpload-"]::before,
+[class*="FileUpload-"]::before {
+  content: "📸";
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 1rem;
 }
 
 /* ============================================
    MENSAJE "NO ENTRIES"
    ============================================ */
 [class*="NoEntries-"],
-[class*="EmptyMessage-"] {
+[class*="EmptyMessage-"],
+div:contains("No Entries") {
   text-align: center !important;
-  padding: 4rem 2rem !important;
-  color: #6b7280 !important;
+  padding: 5rem 2rem !important;
+  color: var(--gris-medio) !important;
+  background: white !important;
+  border-radius: 16px !important;
+  margin: 2rem !important;
 }
 
 [class*="NoEntries-"]::before,
 [class*="EmptyMessage-"]::before {
   content: "📸";
-  font-size: 4rem;
+  font-size: 5rem;
   display: block;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  opacity: 0.5;
+}
+
+/* ============================================
+   CONTROLES DE VISTA (Sort by, grid/list)
+   ============================================ */
+[class*="ViewControls-"],
+[class*="ToolbarContainer-"] {
+  margin-bottom: 1.5rem !important;
+  padding: 1rem !important;
+  background: white !important;
+  border-radius: 12px !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Botones de vista */
+[class*="ViewControls-"] button,
+[class*="ToolbarContainer-"] button {
+  border-radius: 8px !important;
+  transition: all 0.3s ease !important;
+}
+
+[class*="ViewControls-"] button:hover,
+[class*="ToolbarContainer-"] button:hover {
+  background: var(--amarillo-claro) !important;
+  color: var(--amarillo-hover) !important;
+}
+
+/* ============================================
+   TABS (Contents / Media)
+   ============================================ */
+[class*="TabsContainer-"],
+[class*="TopBarNav-"] {
+  background: transparent !important;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+[class*="Tab-"],
+[class*="TopBarNav-"] a {
+  color: rgba(255, 255, 255, 0.7) !important;
+  padding: 1rem 1.5rem !important;
+  border-bottom: 3px solid transparent !important;
+  transition: all 0.3s ease !important;
+  font-weight: 600 !important;
+}
+
+[class*="Tab-"]:hover,
+[class*="TopBarNav-"] a:hover {
+  color: white !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+
+[class*="Tab-"][class*="active"],
+[class*="TopBarNav-"] a[class*="active"] {
+  color: var(--amarillo-principal) !important;
+  border-bottom-color: var(--amarillo-principal) !important;
 }
 
 /* ============================================
    BADGES Y ETIQUETAS
    ============================================ */
 [class*="Badge-"],
-[class*="StatusBadge-"] {
+[class*="StatusBadge-"],
+span[class*="Label"] {
   border-radius: 20px !important;
-  padding: 0.25rem 0.75rem !important;
-  font-size: 0.875rem !important;
-  font-weight: 600 !important;
+  padding: 0.375rem 1rem !important;
+  font-size: 0.8125rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.5px !important;
+  text-transform: uppercase !important;
 }
 
 /* ============================================
    ANIMACIONES
    ============================================ */
-@keyframes fadeIn {
+@keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
@@ -276,42 +522,108 @@ select:focus {
   }
 }
 
-[class*="ListCard-"],
-[class*="Card-"] {
-  animation: fadeIn 0.4s ease-out !important;
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
-/* ============================================
-   RESPONSIVE
-   ============================================ */
-@media (max-width: 768px) {
-  [class*="AppHeader-"] {
-    padding: 1rem !important;
-  }
-  
-  [class*="ControlButton-"] {
-    width: 100% !important;
-    margin-bottom: 0.5rem !important;
-  }
+[class*="ListCard-"],
+[class*="Card-"],
+[class*="EntryCard"] {
+  animation: fadeInUp 0.5s ease-out !important;
+}
+
+[class*="CollectionLink-"],
+nav[class*="SidebarNav"] a {
+  animation: slideIn 0.4s ease-out !important;
 }
 
 /* ============================================
    SCROLLBAR PERSONALIZADO
    ============================================ */
 ::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
 }
 
 ::-webkit-scrollbar-track {
   background: #f1f1f1;
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
   background: var(--amarillo-principal);
-  border-radius: 5px;
+  border-radius: 10px;
+  border: 2px solid #f1f1f1;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--amarillo-hover);
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+@media (max-width: 768px) {
+  [class*="AppHeader-"],
+  header[class*="TopBar"] {
+    padding: 1rem !important;
+    min-height: 70px !important;
+  }
+  
+  #admin-logo {
+    height: 40px !important;
+  }
+  
+  [class*="CollectionMain-"],
+  [class*="ViewContainer-"] {
+    padding: 1rem !important;
+  }
+  
+  [class*="ControlButton-"],
+  button[class*="Button-primary"] {
+    width: 100% !important;
+    margin-bottom: 0.5rem !important;
+  }
+  
+  [class*="CollectionTop-"] h1,
+  main h1 {
+    font-size: 1.75rem !important;
+  }
+}
+
+/* ============================================
+   LOADING STATES
+   ============================================ */
+[class*="Loader-"],
+[class*="LoadingSpinner-"] {
+  border-color: var(--amarillo-principal) transparent var(--amarillo-principal) transparent !important;
+}
+
+/* ============================================
+   TOAST NOTIFICATIONS
+   ============================================ */
+[class*="Toast-"],
+[class*="Notification-"] {
+  border-radius: 12px !important;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2) !important;
+}
+
+[class*="Toast-success"] {
+  background: #10b981 !important;
+}
+
+[class*="Toast-error"] {
+  background: #ef4444 !important;
+}
+
+[class*="Toast-warning"] {
+  background: var(--amarillo-principal) !important;
+  color: var(--negro-principal) !important;
 }
