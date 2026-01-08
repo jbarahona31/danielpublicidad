@@ -66,6 +66,23 @@ Si ves este error al subir imágenes:
 
 ---
 
+## 📦 Categorías de Productos
+
+- 👕 **Uniformes** - Uniformes deportivos y corporativos
+- 🧢 **Gorras** - Gorras personalizadas
+- ☕ **Posillos** - Tazas y mugs personalizados
+- 🎨 **Estampados** - Diseños de estampados
+
+## 🎨 Panel de Administración
+
+El panel de administración está personalizado con los colores de Daniel Publicidad:
+- Amarillo dorado (#fbbf24)
+- Negro/Gris oscuro (#1f2937)
+- Gradientes modernos
+- Iconos intuitivos para cada categoría
+
+---
+
 ## Configuración del Panel de Administración
 
 ### Pasos para activar el login de administrador:
