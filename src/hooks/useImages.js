@@ -10,12 +10,12 @@ export const useImages = (category) => {
       try {
         // Try to use Vite's import.meta.glob for dynamic loading
         // This will be replaced by the static list during build
-        const imageModules = import.meta.glob('/public/images/**/*.{png,jpg,jpeg,webp,gif}', { eager: false });
+        const imageModules = import.meta.glob('/images/**/*.{png,jpg,jpeg,webp,gif}', { eager: false });
         
         const imagePaths = Object.keys(imageModules)
           .filter(path => path.includes(`/${category}/`))
           .map(path => ({
-            src: path.replace('/public', ''),
+            src: path,
             alt: path.split('/').pop().replace(/\.[^/.]+$/, ''),
             name: path.split('/').pop()
           }));

@@ -26,8 +26,8 @@ const ImageGallery = ({ category, title }) => {
     <div className="image-gallery">
       {title && <h2 className="gallery-title">{title}</h2>}
       <div className="gallery-grid">
-        {images.map((image, index) => (
-          <div key={index} className="gallery-item">
+        {images.map((image) => (
+          <div key={image.src} className="gallery-item">
             <img 
               src={image.src} 
               alt={image.alt}
