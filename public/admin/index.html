@@ -13,10 +13,24 @@
     </style>
   </head>
   <body>
-    <script src="https://unpkg.com/decap-cms@^3.1.0/dist/decap-cms.js"></script>
+    <!-- Usar Netlify CMS versión estable en lugar de Decap -->
+    <script src="https://unpkg.com/netlify-cms@^2.10.192/dist/netlify-cms.js"></script>
     <script>
-      // Inicialización del CMS
-      CMS.init();
+      // Limpiar estado del CMS al cargar si hay errores
+      if (window.localStorage) {
+        const hasError = window.location.hash.includes('error');
+        if (hasError) {
+          console.log('Limpiando caché del CMS...');
+          Object.keys(localStorage).forEach(key => {
+            if (key.includes('netlify-cms') || key.includes('decap-cms')) {
+              localStorage.removeItem(key);
+            }
+          });
+          // Recargar sin el hash de error
+          window.location.hash = '';
+          window.location.reload();
+        }
+      }
     </script>
   </body>
 </html>

@@ -38,6 +38,34 @@
 
 ---
 
+## 🔧 Solución de Problemas
+
+### Error: "Failed to execute 'removeChild'"
+
+Si ves este error al subir imágenes:
+
+1. **Cierra sesión** en el panel `/admin`
+2. **Borra el caché** del navegador (Ctrl+Shift+Delete)
+3. **Abre ventana de incógnito**
+4. **Vuelve a entrar** a `/admin`
+5. **Intenta subir de nuevo**
+
+### Si el problema persiste:
+
+1. Ve a la consola del navegador (F12)
+2. Ve a "Application" → "Local Storage"
+3. Elimina todas las entradas que contengan "netlify-cms" o "decap-cms"
+4. Recarga la página
+
+### Formato recomendado de imágenes:
+
+- **Formato:** JPG o PNG
+- **Tamaño:** Máximo 2MB
+- **Dimensiones:** 800x800px o mayor
+- **Nombres de archivo:** Sin espacios ni caracteres especiales
+
+---
+
 ## Configuración del Panel de Administración
 
 ### Pasos para activar el login de administrador:
