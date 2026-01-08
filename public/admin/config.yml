@@ -5,55 +5,121 @@ backend:
 media_folder: "public/images"
 public_folder: "/images"
 
+locale: "es"
+
 collections:
   - name: "uniformes"
     label: "Uniformes"
+    label_singular: "Uniforme"
+    description: "Gestiona las imágenes de uniformes"
     folder: "public/images/uniformes"
     create: true
-    media_folder: ""
-    public_folder: ""
+    slug: "uniforme-{{year}}-{{month}}-{{day}}-{{hour}}{{minute}}{{second}}"
     extension: "md"
     format: "frontmatter"
     fields:
-      - { label: "Imagen", name: "image", widget: "image" }
-      - { label: "Nombre", name: "title", widget: "string", required: false }
-      - { label: "Descripción", name: "description", widget: "text", required: false }
-
-  - name: "estampados"
-    label: "Estampados"
-    folder: "public/images/estampados"
-    create: true
-    media_folder: ""
-    public_folder: ""
-    extension: "md"
-    format: "frontmatter"
-    fields:
-      - { label: "Imagen", name: "image", widget: "image" }
-      - { label: "Nombre", name: "title", widget: "string", required: false }
-      - { label: "Descripción", name: "description", widget: "text", required: false }
+      - label: "Imagen del Producto"
+        name: "image"
+        widget: "image"
+        required: true
+        hint: "Arrastra tu imagen aquí o haz click para seleccionar (JPG, PNG, WEBP)"
+        media_folder: "/public/images/uniformes"
+        public_folder: "/images/uniformes"
+      - label: "Nombre del Producto"
+        name: "title"
+        widget: "string"
+        required: false
+        hint: "Opcional: Dale un nombre descriptivo"
+        default: "Uniforme"
+      - label: "Descripción"
+        name: "description"
+        widget: "text"
+        required: false
+        hint: "Opcional: Agrega detalles del producto"
 
   - name: "gorras"
     label: "Gorras"
+    label_singular: "Gorra"
+    description: "Gestiona las imágenes de gorras"
     folder: "public/images/gorras"
     create: true
-    media_folder: ""
-    public_folder: ""
+    slug: "gorra-{{year}}-{{month}}-{{day}}-{{hour}}{{minute}}{{second}}"
     extension: "md"
     format: "frontmatter"
     fields:
-      - { label: "Imagen", name: "image", widget: "image" }
-      - { label: "Nombre", name: "title", widget: "string", required: false }
-      - { label: "Descripción", name: "description", widget: "text", required: false }
+      - label: "Imagen del Producto"
+        name: "image"
+        widget: "image"
+        required: true
+        hint: "Arrastra tu imagen aquí o haz click para seleccionar (JPG, PNG, WEBP)"
+        media_folder: "/public/images/gorras"
+        public_folder: "/images/gorras"
+      - label: "Nombre del Producto"
+        name: "title"
+        widget: "string"
+        required: false
+        hint: "Opcional: Dale un nombre descriptivo"
+        default: "Gorra"
+      - label: "Descripción"
+        name: "description"
+        widget: "text"
+        required: false
+        hint: "Opcional: Agrega detalles del producto"
 
   - name: "vasos"
     label: "Vasos"
+    label_singular: "Vaso"
+    description: "Gestiona las imágenes de vasos"
     folder: "public/images/vasos"
     create: true
-    media_folder: ""
-    public_folder: ""
+    slug: "vaso-{{year}}-{{month}}-{{day}}-{{hour}}{{minute}}{{second}}"
     extension: "md"
     format: "frontmatter"
     fields:
-      - { label: "Imagen", name: "image", widget: "image" }
-      - { label: "Nombre", name: "title", widget: "string", required: false }
-      - { label: "Descripción", name: "description", widget: "text", required: false }
+      - label: "Imagen del Producto"
+        name: "image"
+        widget: "image"
+        required: true
+        hint: "Arrastra tu imagen aquí o haz click para seleccionar (JPG, PNG, WEBP)"
+        media_folder: "/public/images/vasos"
+        public_folder: "/images/vasos"
+      - label: "Nombre del Producto"
+        name: "title"
+        widget: "string"
+        required: false
+        hint: "Opcional: Dale un nombre descriptivo"
+        default: "Vaso"
+      - label: "Descripción"
+        name: "description"
+        widget: "text"
+        required: false
+        hint: "Opcional: Agrega detalles del producto"
+
+  - name: "estampados"
+    label: "Estampados"
+    label_singular: "Estampado"
+    description: "Gestiona las imágenes de estampados"
+    folder: "public/images/estampados"
+    create: true
+    slug: "estampado-{{year}}-{{month}}-{{day}}-{{hour}}{{minute}}{{second}}"
+    extension: "md"
+    format: "frontmatter"
+    fields:
+      - label: "Imagen del Producto"
+        name: "image"
+        widget: "image"
+        required: true
+        hint: "Arrastra tu imagen aquí o haz click para seleccionar (JPG, PNG, WEBP)"
+        media_folder: "/public/images/estampados"
+        public_folder: "/images/estampados"
+      - label: "Nombre del Producto"
+        name: "title"
+        widget: "string"
+        required: false
+        hint: "Opcional: Dale un nombre descriptivo"
+        default: "Estampado"
+      - label: "Descripción"
+        name: "description"
+        widget: "text"
+        required: false
+        hint: "Opcional: Agrega detalles del producto"
