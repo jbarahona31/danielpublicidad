@@ -11,6 +11,7 @@ export default function Contacto() {
   
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -60,6 +61,7 @@ export default function Contacto() {
     }
     
     setIsSubmitting(true);
+    setSubmitError('');
     
     // Submit form using fetch API to avoid POST in browser history
     const form = e.target;
@@ -76,7 +78,7 @@ export default function Contacto() {
       navigate('/mensaje-enviado', { replace: true });
     } catch (error) {
       console.error('Error:', error);
-      alert('Hubo un error al enviar el mensaje. Por favor intenta de nuevo.');
+      setSubmitError('Hubo un error al enviar el mensaje. Por favor intenta de nuevo.');
       setIsSubmitting(false);
     }
   };
@@ -182,6 +184,21 @@ export default function Contacto() {
             </span>
           )}
         </div>
+
+        {submitError && (
+          <div style={{ 
+            color: '#e74c3c', 
+            backgroundColor: 'rgba(231, 76, 60, 0.1)',
+            border: '2px solid #e74c3c',
+            borderRadius: '8px',
+            padding: '12px 16px',
+            marginBottom: '20px',
+            fontSize: '14px',
+            fontWeight: '500'
+          }}>
+            {submitError}
+          </div>
+        )}
 
         <button 
           type="submit" 

@@ -1,6 +1,8 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './MensajeEnviado.css';
+
+const AUTO_REDIRECT_DELAY = 10000; // 10 seconds
 
 const MensajeEnviado = () => {
   const navigate = useNavigate();
@@ -9,7 +11,7 @@ const MensajeEnviado = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       navigate('/');
-    }, 10000);
+    }, AUTO_REDIRECT_DELAY);
 
     return () => clearTimeout(timer);
   }, [navigate]);
