@@ -238,13 +238,6 @@ button[class*="Button-secondary"]:hover {
   transform: translateY(-2px) !important;
 }
 
-/* Botón "Quick add" */
-button:contains("Quick add"),
-[class*="quick" i] button {
-  background: var(--negro-principal) !important;
-  color: var(--amarillo-principal) !important;
-}
-
 /* ============================================
    TARJETAS/CARDS
    ============================================ */
@@ -331,8 +324,7 @@ label {
    MENSAJE "NO ENTRIES"
    ============================================ */
 [class*="NoEntries"],
-[class*="EmptyMessage"],
-p:contains("No Entries") {
+[class*="EmptyMessage"] {
   text-align: center !important;
   padding: 4rem 2rem !important;
   color: var(--gris-medio) !important;

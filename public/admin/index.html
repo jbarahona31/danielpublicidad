@@ -58,6 +58,9 @@
                         document.querySelector('[role="banner"]');
           
           if (header && !header.querySelector('.admin-logo-container')) {
+            // Guardar elementos interactivos existentes
+            const existingButtons = Array.from(header.querySelectorAll('button, a[href]'));
+            
             // Limpiar contenido existente del header
             header.innerHTML = '';
             
@@ -79,6 +82,9 @@
             logoContainer.appendChild(logo);
             logoContainer.appendChild(title);
             header.appendChild(logoContainer);
+            
+            // Restaurar elementos interactivos si existen
+            existingButtons.forEach(btn => header.appendChild(btn));
             
             // Aplicar estilos al header
             header.style.background = 'linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%)';
