@@ -22,7 +22,7 @@ danielpublicidad/
 │   │   ├── uniformes/
 │   │   ├── estampados/
 │   │   ├── gorras/
-│   │   └── vasos/
+│   │   └── posillos/
 │   └── logo.png
 ├── src/
 │   ├── components/
@@ -35,7 +35,7 @@ danielpublicidad/
 │   │   ├── Uniformes.jsx
 │   │   ├── Estampados.jsx
 │   │   ├── Gorras.jsx
-│   │   ├── Vasos.jsx
+│   │   ├── Posillos.jsx
 │   │   └── Contacto.jsx
 │   ├── styles/
 │   │   └── global.css
@@ -77,7 +77,7 @@ npm run lint
 - **Uniformes** - Uniformes deportivos personalizados
 - **Estampados** - Servicios de estampado
 - **Gorras** - Gorras personalizadas
-- **Vasos** - Vasos y pocillos publicitarios
+- **Posillos** - Tazas y mugs personalizados
 - **Contacto** - Información de contacto
 
 ## 🔐 Panel de Administración

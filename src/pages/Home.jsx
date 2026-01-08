@@ -11,7 +11,7 @@ export default function Home() {
         </p>
 
         <p className="hero-text">
-          Creamos uniformes deportivos, gorras, estampados y vasos personalizados
+          Creamos uniformes deportivos, gorras, estampados y posillos personalizados
           con acabados de alta calidad. Trabajamos con empresas, emprendimientos
           y eventos que buscan productos que representen su identidad y destaquen.
         </p>

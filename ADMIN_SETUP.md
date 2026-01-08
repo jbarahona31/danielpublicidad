@@ -7,7 +7,7 @@
    - Inicia sesión con tu email y contraseña
 
 2. **Selecciona una categoría**
-   - Click en: Uniformes, Gorras, Vasos o Estampados
+   - Click en: Uniformes, Gorras, Posillos o Estampados
 
 3. **Crea una nueva entrada**
    - Click en el botón "New [Categoría]" (ej: "New Uniforme")
