@@ -1,6 +1,8 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function Contacto() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     nombre: '',
     telefono: '',
@@ -47,7 +49,7 @@ export default function Contacto() {
     return newErrors;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     
     const newErrors = validateForm();
@@ -59,8 +61,24 @@ export default function Contacto() {
     
     setIsSubmitting(true);
     
-    // Let Netlify Forms handle the submission
-    e.target.submit();
+    // Submit form using fetch API to avoid POST in browser history
+    const form = e.target;
+    const formData = new FormData(form);
+    
+    try {
+      await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData).toString()
+      });
+      
+      // Navigate with replace: true to avoid POST in history
+      navigate('/mensaje-enviado', { replace: true });
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Hubo un error al enviar el mensaje. Por favor intenta de nuevo.');
+      setIsSubmitting(false);
+    }
   };
 
   return (
