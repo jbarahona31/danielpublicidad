@@ -31,31 +31,13 @@ collections:
   - name: "posillos"
     label: "Posillos"
     label_singular: "Posillo"
-    description: "Gestiona las imágenes de posillos"
     folder: "public/images/posillos"
     create: true
-    slug: "posillo-{{year}}-{{month}}-{{day}}-{{hour}}{{minute}}{{second}}"
-    extension: "md"
-    format: "frontmatter"
+    slug: "{{slug}}"
     fields:
-      - label: "Imagen del Producto"
-        name: "image"
-        widget: "image"
-        required: true
-        hint: "Arrastra tu imagen aquí o haz click para seleccionar (JPG, PNG, WEBP)"
-        media_folder: "/public/images/posillos"
-        public_folder: "/images/posillos"
-      - label: "Nombre del Producto"
-        name: "title"
-        widget: "string"
-        required: false
-        hint: "Opcional: Dale un nombre descriptivo"
-        default: "Posillo"
-      - label: "Descripción"
-        name: "description"
-        widget: "text"
-        required: false
-        hint: "Opcional: Agrega detalles del producto"
+      - {label: "Imagen", name: "image", widget: "image"}
+      - {label: "Título", name: "title", widget: "string", default: "Posillo"}
+      - {label: "Fecha", name: "date", widget: "datetime", default: ""}
 
   - name: "estampados"
     label: "Estampados"
