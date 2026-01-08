@@ -1,6 +1,6 @@
 # Daniel Publicidad
 
-Sitio web corporativo para Daniel Publicidad, especialistas en uniformes deportivos personalizados, estampados, gorras y vasos publicitarios.
+Sitio web corporativo para Daniel Publicidad, especialistas en uniformes deportivos personalizados, estampados, gorras y posillos publicitarios.
 
 ## 🚀 Stack Tecnológico
 
