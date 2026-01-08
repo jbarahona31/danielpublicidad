@@ -1,22 +1,18 @@
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
+import { OrbitControls, useGLTF } from "@react-three/drei";
 
-function Box() {
-  return (
-    <mesh rotation={[0.4, 0.4, 0]}>
-      <boxGeometry args={[1.5, 1, 0.3]} />
-      <meshStandardMaterial color="#facc15" />
-    </mesh>
-  );
+function ProductModel({ path }) {
+  const { scene } = useGLTF(path);
+  return <primitive object={scene} scale={1.5} />;
 }
 
-export default function Model3D() {
+export default function Model3D({ modelPath }) {
   return (
     <div style={{ height: "400px" }}>
-      <Canvas camera={{ position: [2, 2, 2] }}>
-        <ambientLight intensity={0.6} />
-        <directionalLight position={[5, 5, 5]} />
-        <Box />
+      <Canvas camera={{ position: [0, 1.5, 3] }}>
+        <ambientLight intensity={0.7} />
+        <directionalLight position={[5, 5, 5]} intensity={1} />
+        <ProductModel path={modelPath} />
         <OrbitControls enableZoom />
       </Canvas>
     </div>
