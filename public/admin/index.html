@@ -6,6 +6,9 @@
     <meta name="robots" content="noindex" />
     <title>Panel de Administración - Daniel Publicidad</title>
     
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/logo.png" />
+    
     <!-- Netlify Identity -->
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     
@@ -13,32 +16,38 @@
     <link rel="stylesheet" href="/admin/custom.css" />
     
     <style>
+      /* Estilos de carga */
       body {
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
         margin: 0;
         padding: 0;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
       }
       
-      /* Estilos para el logo custom */
-      .admin-logo-container {
+      /* Pantalla de carga personalizada */
+      #nc-root::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #1f2937;
         display: flex;
         align-items: center;
-        gap: 1rem;
-        padding: 1rem 2rem;
-        background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        justify-content: center;
+        z-index: 9999;
       }
       
-      .admin-logo {
-        height: 50px;
-        width: auto;
-      }
-      
-      .admin-title {
-        color: #1f2937;
+      #nc-root::after {
+        content: 'Cargando Panel de Administración...';
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #fbbf24;
         font-size: 1.5rem;
-        font-weight: 700;
-        margin: 0;
+        font-weight: 600;
+        z-index: 10000;
       }
     </style>
   </head>
@@ -46,110 +55,15 @@
     <!-- Netlify CMS -->
     <script src="https://unpkg.com/netlify-cms@^2.10.192/dist/netlify-cms.js"></script>
     
+    <!-- JavaScript Personalizado -->
+    <script src="/admin/custom-init.js"></script>
+    
     <script>
-      // Esperar a que el CMS cargue
-      window.addEventListener('DOMContentLoaded', function() {
-        
-        // Función para agregar el logo
-        function addCustomLogo() {
-          // Buscar el header del CMS
-          const header = document.querySelector('[class*="AppHeader"]') || 
-                        document.querySelector('header') ||
-                        document.querySelector('[role="banner"]');
-          
-          if (header && !header.querySelector('.admin-logo-container')) {
-            // Guardar elementos interactivos existentes
-            const existingButtons = Array.from(header.querySelectorAll('button, a[href]'));
-            
-            // Limpiar contenido existente del header
-            header.innerHTML = '';
-            
-            // Crear contenedor personalizado
-            const logoContainer = document.createElement('div');
-            logoContainer.className = 'admin-logo-container';
-            
-            // Agregar logo
-            const logo = document.createElement('img');
-            logo.src = '/logo.png';
-            logo.alt = 'Daniel Publicidad';
-            logo.className = 'admin-logo';
-            
-            // Agregar título
-            const title = document.createElement('h1');
-            title.className = 'admin-title';
-            title.textContent = 'Panel de Administración';
-            
-            logoContainer.appendChild(logo);
-            logoContainer.appendChild(title);
-            header.appendChild(logoContainer);
-            
-            // Restaurar elementos interactivos si existen
-            existingButtons.forEach(btn => header.appendChild(btn));
-            
-            // Aplicar estilos al header
-            header.style.background = 'linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%)';
-            header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
-            header.style.padding = '0';
-          }
-        }
-        
-        // Función para personalizar iconos de categorías
-        function customizeCollectionIcons() {
-          const collectionLinks = document.querySelectorAll('[class*="CollectionLink"]');
-          
-          collectionLinks.forEach(link => {
-            const text = link.textContent.toLowerCase();
-            let icon = '📁';
-            
-            if (text.includes('uniforme')) icon = '👕';
-            else if (text.includes('gorra')) icon = '🧢';
-            else if (text.includes('posillo') || text.includes('vaso')) icon = '☕';
-            else if (text.includes('estampado')) icon = '🎨';
-            
-            // Agregar icono si no existe
-            if (!link.querySelector('.category-icon')) {
-              const iconSpan = document.createElement('span');
-              iconSpan.className = 'category-icon';
-              iconSpan.textContent = icon;
-              iconSpan.style.fontSize = '1.5rem';
-              iconSpan.style.marginRight = '0.75rem';
-              link.insertBefore(iconSpan, link.firstChild);
-            }
-          });
-        }
-        
-        // Observador para detectar cambios en el DOM
-        const observer = new MutationObserver(function(mutations) {
-          addCustomLogo();
-          customizeCollectionIcons();
-        });
-        
-        // Configurar el observador
-        observer.observe(document.body, {
-          childList: true,
-          subtree: true
-        });
-        
-        // Ejecutar inmediatamente
-        setTimeout(addCustomLogo, 100);
-        setTimeout(addCustomLogo, 500);
-        setTimeout(addCustomLogo, 1000);
-        setTimeout(customizeCollectionIcons, 100);
-        setTimeout(customizeCollectionIcons, 500);
-        setTimeout(customizeCollectionIcons, 1000);
-        
-        // Ejecutar cada vez que cambie la ruta
-        window.addEventListener('hashchange', function() {
-          setTimeout(addCustomLogo, 100);
-          setTimeout(customizeCollectionIcons, 100);
-        });
-      });
-      
       // Limpiar caché si hay errores
       if (window.localStorage) {
         const hasError = window.location.hash.includes('error');
         if (hasError) {
-          console.log('Limpiando caché del CMS...');
+          console.log('🧹 Limpiando caché del CMS...');
           Object.keys(localStorage).forEach(key => {
             if (key.includes('netlify-cms') || key.includes('decap-cms')) {
               localStorage.removeItem(key);
@@ -160,11 +74,9 @@
         }
       }
       
-      // Configuración del CMS después de cargar
-      if (window.CMS) {
-        // Registrar preview styles
-        CMS.registerPreviewStyle('/admin/custom.css');
-      }
+      // Log de inicialización
+      console.log('🚀 Panel de Administración - Daniel Publicidad');
+      console.log('📦 Versión: 1.0.0');
     </script>
   </body>
 </html>
