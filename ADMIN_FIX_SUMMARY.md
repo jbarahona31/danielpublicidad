@@ -147,7 +147,7 @@ El MutationObserver y la manipulación del DOM pueden:
 
 ---
 
-**Fecha de arreglo:** 2026-01-09
+**Fecha de arreglo:** 2025-01-09
 **Archivos cambiados:** 5
 **Líneas añadidas:** 61
 **Líneas eliminadas:** 146
