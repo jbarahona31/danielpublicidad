@@ -33,6 +33,7 @@ function extractFrontmatter(content) {
 function readCategoryImages(categoryPath, categoryName) {
   const images = [];
   const imageExtensions = ['.png', '.jpg', '.jpeg', '.webp', '.gif'];
+  const seenImages = new Set(); // Track unique image paths
   
   if (!fs.existsSync(categoryPath)) {
     console.log(`⚠️  Carpeta no existe: ${categoryPath}`);
@@ -49,7 +50,8 @@ function readCategoryImages(categoryPath, categoryName) {
       const content = fs.readFileSync(filePath, 'utf-8');
       const frontmatter = extractFrontmatter(content);
       
-      if (frontmatter && frontmatter.image) {
+      if (frontmatter && frontmatter.image && !seenImages.has(frontmatter.image)) {
+        seenImages.add(frontmatter.image);
         images.push({
           src: frontmatter.image,
           alt: frontmatter.title || frontmatter.image.split('/').pop().replace(/\.[^/.]+$/, ''),
@@ -62,9 +64,9 @@ function readCategoryImages(categoryPath, categoryName) {
     else if (imageExtensions.some(ext => file.toLowerCase().endsWith(ext))) {
       // Solo agregar si no es una imagen ya referenciada por un .md
       const imagePath = `/images/${categoryName}/${file}`;
-      const alreadyAdded = images.some(img => img.src === imagePath);
       
-      if (!alreadyAdded) {
+      if (!seenImages.has(imagePath)) {
+        seenImages.add(imagePath);
         images.push({
           src: imagePath,
           alt: file.replace(/\.[^/.]+$/, ''),
@@ -109,7 +111,7 @@ function generateImagesJson() {
   // Crear carpeta src/data si no existe
   if (!fs.existsSync(outputDir)) {
     fs.mkdirSync(outputDir, { recursive: true });
-    console.log('📁 Creada carpeta: src/data/');
+    console.log(`📁 Creada carpeta: ${outputDir}/`);
   }
   
   // Escribir el archivo
