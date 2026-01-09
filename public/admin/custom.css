@@ -260,8 +260,7 @@ button[class*="Button-primary"],
 button[class*="StyledButton"]:not([class*="secondary"]),
 [class*="ControlButton"],
 button[class*="ControlButton"],
-[class*="ToolbarButton-"][class*="primary"],
-button:contains("New") {
+[class*="ToolbarButton-"][class*="primary"] {
   background: var(--amarillo-principal) !important;
   color: var(--negro-principal) !important;
   border: none !important;
@@ -309,8 +308,7 @@ button[type="submit"]:hover {
 button[class*="danger"],
 button[class*="Delete"],
 button[title*="Delete"],
-button[title*="delete"],
-button:contains("Delete") {
+button[title*="delete"] {
   background: #ef4444 !important;
   color: white !important;
   border: none !important;
@@ -438,8 +436,7 @@ label {
    MENSAJE "NO ENTRIES"
    ============================================ */
 [class*="NoEntries"],
-[class*="EmptyMessage"],
-div:contains("No Entries") {
+[class*="EmptyMessage"] {
   text-align: center !important;
   padding: 4rem 2rem !important;
   color: var(--gris-medio) !important;

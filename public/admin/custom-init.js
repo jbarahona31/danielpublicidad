@@ -3,6 +3,19 @@
 // Daniel Publicidad
 // ============================================
 
+// Debounce helper function
+function debounce(func, wait) {
+  let timeout;
+  return function executedFunction(...args) {
+    const later = () => {
+      clearTimeout(timeout);
+      func(...args);
+    };
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
+}
+
 // Esperar a que el CMS cargue
 window.addEventListener('DOMContentLoaded', (event) => {
   console.log('🎨 Inicializando personalización del CMS...');
@@ -13,8 +26,11 @@ window.addEventListener('DOMContentLoaded', (event) => {
   }, 1000);
   
   // Observar cambios en el DOM para mantener la personalización
+  // Usar debounce para evitar llamadas excesivas
+  const debouncedCustomize = debounce(customizeCMS, 300);
+  
   const observer = new MutationObserver((mutations) => {
-    customizeCMS();
+    debouncedCustomize();
   });
   
   observer.observe(document.body, {
@@ -53,25 +69,22 @@ function customizeCMS() {
     `;
   }
   
-  // Confirmar antes de eliminar
+  // Confirmar antes de eliminar - usar addEventListener
   const deleteButtons = document.querySelectorAll('button[class*="danger"], button[class*="Delete"], button[title*="Delete"]');
   deleteButtons.forEach(btn => {
     if (!btn.dataset.confirmAdded) {
       btn.dataset.confirmAdded = 'true';
-      const originalClick = btn.onclick;
-      btn.onclick = function(e) {
+      
+      // Usar addEventListener en lugar de onclick para evitar sobrescribir handlers
+      btn.addEventListener('click', function(e) {
         const confirmed = confirm('¿Estás seguro de que quieres eliminar esta imagen?\n\nEsta acción no se puede deshacer.');
-        if (confirmed) {
-          if (originalClick) {
-            originalClick.call(this, e);
-          }
-          return true;
-        } else {
+        if (!confirmed) {
           e.preventDefault();
           e.stopPropagation();
+          e.stopImmediatePropagation();
           return false;
         }
-      };
+      }, { capture: true }); // Usar capture para ejecutar antes que otros handlers
     }
   });
   
