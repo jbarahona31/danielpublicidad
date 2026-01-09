@@ -11,11 +11,11 @@ const ImageModal = ({ image, onClose, onNext, onPrev, onWhatsApp, hasMultiple })
     };
 
     document.addEventListener('keydown', handleKeyDown);
-    document.body.style.overflow = 'hidden'; // Prevenir scroll
+    document.body.classList.add('modal-open'); // Usar clase CSS
 
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
-      document.body.style.overflow = 'unset';
+      document.body.classList.remove('modal-open');
     };
   }, [onClose, onNext, onPrev, hasMultiple]);
 

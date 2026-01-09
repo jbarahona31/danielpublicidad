@@ -10,6 +10,8 @@ const ImageGallery = ({ category, title }) => {
 
   const whatsappNumber = '573008013669'; // Colombia +57 300 801 3669
 
+  const getImageName = (image) => image.alt || image.name;
+
   const openWhatsApp = (imageName) => {
     const message = `Hola! Me interesa el diseño: ${imageName}`;
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
@@ -66,39 +68,42 @@ const ImageGallery = ({ category, title }) => {
         {title && <h2 className="gallery-title">{title}</h2>}
         
         <div className="gallery-grid">
-          {images.map((image, index) => (
-            <div key={image.src} className="gallery-card">
-              <div 
-                className="card-image-wrapper"
-                onClick={() => openModal(image, index)}
-              >
-                <img 
-                  src={image.src} 
-                  alt={image.alt}
-                  loading="lazy"
-                  className="card-image"
-                />
-                <div className="card-overlay">
-                  <span className="zoom-icon">🔍</span>
+          {images.map((image, index) => {
+            const imageName = getImageName(image);
+            return (
+              <div key={`${image.src}-${index}`} className="gallery-card">
+                <div 
+                  className="card-image-wrapper"
+                  onClick={() => openModal(image, index)}
+                >
+                  <img 
+                    src={image.src} 
+                    alt={image.alt}
+                    loading="lazy"
+                    className="card-image"
+                  />
+                  <div className="card-overlay">
+                    <span className="zoom-icon">🔍</span>
+                  </div>
                 </div>
+                
+                <div className="card-content">
+                  <h3 className="card-title">{imageName}</h3>
+                  {image.description && (
+                    <p className="card-description">{image.description}</p>
+                  )}
+                </div>
+                
+                <button 
+                  className="card-whatsapp-btn"
+                  onClick={() => openWhatsApp(imageName)}
+                >
+                  <span className="whatsapp-icon">📱</span>
+                  Consultar por WhatsApp
+                </button>
               </div>
-              
-              <div className="card-content">
-                <h3 className="card-title">{image.alt || image.name}</h3>
-                {image.description && (
-                  <p className="card-description">{image.description}</p>
-                )}
-              </div>
-              
-              <button 
-                className="card-whatsapp-btn"
-                onClick={() => openWhatsApp(image.alt || image.name)}
-              >
-                <span className="whatsapp-icon">📱</span>
-                Consultar por WhatsApp
-              </button>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 
@@ -108,7 +113,7 @@ const ImageGallery = ({ category, title }) => {
           onClose={closeModal}
           onNext={() => navigateImage('next')}
           onPrev={() => navigateImage('prev')}
-          onWhatsApp={() => openWhatsApp(selectedImage.alt || selectedImage.name)}
+          onWhatsApp={() => openWhatsApp(getImageName(selectedImage))}
           hasMultiple={images.length > 1}
         />
       )}
