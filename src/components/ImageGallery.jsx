@@ -1,14 +1,53 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useImages } from '../hooks/useImages';
+import ImageModal from './ImageModal';
 import './ImageGallery.css';
 
 const ImageGallery = ({ category, title }) => {
   const { images, loading } = useImages(category);
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const whatsappNumber = '573008013669'; // Colombia +57 300 801 3669
+
+  const getImageName = (image) => image.alt || image.name;
+
+  const openWhatsApp = (imageName) => {
+    const message = `Hola! Me interesa el diseño: ${imageName}`;
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+  };
+
+  const openModal = (image, index) => {
+    setSelectedImage({ ...image, index });
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+    setSelectedImage(null);
+  };
+
+  const navigateImage = (direction) => {
+    if (!selectedImage) return;
+    
+    const currentIndex = selectedImage.index;
+    let newIndex;
+    
+    if (direction === 'next') {
+      newIndex = currentIndex === images.length - 1 ? 0 : currentIndex + 1;
+    } else {
+      newIndex = currentIndex === 0 ? images.length - 1 : currentIndex - 1;
+    }
+    
+    setSelectedImage({ ...images[newIndex], index: newIndex });
+  };
 
   if (loading) {
     return (
       <div className="gallery-loading">
-        <p>Cargando imágenes...</p>
+        <div className="spinner"></div>
+        <p>Cargando diseños...</p>
       </div>
     );
   }
@@ -16,31 +55,69 @@ const ImageGallery = ({ category, title }) => {
   if (images.length === 0) {
     return (
       <div className="gallery-empty">
-        <p>No hay imágenes en esta categoría todavía.</p>
-        <p>¡Sube algunas desde el panel de administración!</p>
+        <div className="empty-icon">📸</div>
+        <p className="empty-title">No hay diseños en esta categoría todavía</p>
+        <p className="empty-subtitle">¡Pronto agregaremos nuevos diseños increíbles!</p>
       </div>
     );
   }
 
   return (
-    <div className="image-gallery">
-      {title && <h2 className="gallery-title">{title}</h2>}
-      <div className="gallery-grid">
-        {images.map((image) => (
-          <div key={image.src} className="gallery-item">
-            <img 
-              src={image.src} 
-              alt={image.alt}
-              loading="lazy"
-              className="gallery-image"
-            />
-            <div className="gallery-overlay">
-              <p className="gallery-image-name">{image.alt}</p>
-            </div>
-          </div>
-        ))}
+    <>
+      <div className="image-gallery">
+        {title && <h2 className="gallery-title">{title}</h2>}
+        
+        <div className="gallery-grid">
+          {images.map((image, index) => {
+            const imageName = getImageName(image);
+            return (
+              <div key={`${image.src}-${index}`} className="gallery-card">
+                <div 
+                  className="card-image-wrapper"
+                  onClick={() => openModal(image, index)}
+                >
+                  <img 
+                    src={image.src} 
+                    alt={image.alt}
+                    loading="lazy"
+                    className="card-image"
+                  />
+                  <div className="card-overlay">
+                    <span className="zoom-icon">🔍</span>
+                  </div>
+                </div>
+                
+                <div className="card-content">
+                  <h3 className="card-title">{imageName}</h3>
+                  {image.description && (
+                    <p className="card-description">{image.description}</p>
+                  )}
+                </div>
+                
+                <button 
+                  className="card-whatsapp-btn"
+                  onClick={() => openWhatsApp(imageName)}
+                >
+                  <span className="whatsapp-icon">📱</span>
+                  Consultar por WhatsApp
+                </button>
+              </div>
+            );
+          })}
+        </div>
       </div>
-    </div>
+
+      {modalOpen && selectedImage && (
+        <ImageModal
+          image={selectedImage}
+          onClose={closeModal}
+          onNext={() => navigateImage('next')}
+          onPrev={() => navigateImage('prev')}
+          onWhatsApp={() => openWhatsApp(getImageName(selectedImage))}
+          hasMultiple={images.length > 1}
+        />
+      )}
+    </>
   );
 };
 
