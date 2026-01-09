@@ -3,19 +3,28 @@
     {
       "src": "/images/uniformes/2.jpg",
       "alt": "2",
-      "name": "2.jpg"
+      "name": "2.jpg",
+      "description": ""
+    },
+    {
+      "src": "/images/1.jpg",
+      "alt": "Uniforme",
+      "name": "Uniforme",
+      "description": ""
     }
   ],
   "gorras": [
     {
       "src": "/images/gorras/1.jpg",
       "alt": "1",
-      "name": "1.jpg"
+      "name": "1.jpg",
+      "description": ""
     },
     {
       "src": "/images/gorras/2.jpg",
       "alt": "2",
-      "name": "2.jpg"
+      "name": "2.jpg",
+      "description": ""
     }
   ],
   "posillos": [],
