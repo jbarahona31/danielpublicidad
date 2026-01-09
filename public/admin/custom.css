@@ -35,7 +35,7 @@
 }
 
 /* Logo de Daniel Publicidad */
-[class*="AppHeader"]:first-of-type::before {
+body > div > [class*="AppHeader"]::before {
   content: "" !important;
   display: inline-block !important;
   width: 60px !important;
@@ -378,7 +378,7 @@ select,
     padding: 1rem !important;
   }
 
-  [class*="AppHeader"]::before {
+  body > div > [class*="AppHeader"]::before {
     width: 50px !important;
     height: 50px !important;
   }
