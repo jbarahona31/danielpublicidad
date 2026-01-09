@@ -18,6 +18,10 @@ function extractFrontmatter(content) {
   const frontmatter = {};
   const lines = match[1].split('\n');
   
+  // Simple YAML parser for basic key:value pairs
+  // Note: This works for Netlify CMS's simple frontmatter but doesn't support
+  // complex YAML features like arrays, nested objects, or multi-line values.
+  // For this use case (image, title, description), this is sufficient.
   lines.forEach(line => {
     const [key, ...valueParts] = line.split(':');
     if (key && valueParts.length > 0) {
