@@ -222,13 +222,6 @@ button[class*="secondary"]:hover {
   color: var(--amarillo-principal) !important;
 }
 
-/* Botón "Ordenar por" - Amarillo */
-button:contains("Ordenar"),
-[class*="SortButton"] {
-  background: var(--amarillo-principal) !important;
-  color: var(--negro-principal) !important;
-}
-
 /* ============================================
    MODAL DE MEDIOS
    ============================================ */
