@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import imagesData from '../data/images.json';
 
 export const useImages = (category) => {
   const [images, setImages] = useState([]);
@@ -8,32 +7,20 @@ export const useImages = (category) => {
   useEffect(() => {
     const loadImages = async () => {
       try {
-        // Try to use Vite's import.meta.glob for dynamic loading
-        // This will be replaced by the static list during build
-        const imageModules = import.meta.glob('/images/**/*.{png,jpg,jpeg,webp,gif}', { eager: false });
+        // Importar el JSON generado por el script
+        const imagesData = await import('../data/images.json');
         
-        const imagePaths = Object.keys(imageModules)
-          .filter(path => path.includes(`/${category}/`))
-          .map(path => ({
-            src: path,
-            alt: path.split('/').pop().replace(/\.[^/.]+$/, ''),
-            name: path.split('/').pop()
-          }));
-
-        // Fallback to static JSON if dynamic loading doesn't find images
-        if (imagePaths.length === 0 && imagesData[category]) {
-          setImages(imagesData[category]);
+        if (imagesData.default && imagesData.default[category]) {
+          setImages(imagesData.default[category]);
         } else {
-          setImages(imagePaths);
+          console.warn(`No se encontraron imágenes para la categoría: ${category}`);
+          setImages([]);
         }
         
         setLoading(false);
       } catch (error) {
-        console.error('Error loading images:', error);
-        // Fallback to static JSON
-        if (imagesData[category]) {
-          setImages(imagesData[category]);
-        }
+        console.error('Error al cargar imágenes:', error);
+        setImages([]);
         setLoading(false);
       }
     };

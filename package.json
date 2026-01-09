@@ -8,6 +8,7 @@
     "dev": "vite",
     "prebuild": "node scripts/generate-image-list.cjs",
     "build": "vite build",
+    "generate-images": "node scripts/generate-image-list.cjs",
     "lint": "eslint .",
     "preview": "vite preview"
   },

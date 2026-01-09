@@ -84,3 +84,55 @@ npm run lint
 
 El sitio incluye un panel de administración en `/admin` para gestionar imágenes de productos. Ver [ADMIN_SETUP.md](./ADMIN_SETUP.md) para instrucciones de configuración.
 
+## 📸 Sistema de Imágenes
+
+### Cómo funciona:
+
+1. **Subir imágenes**: Usa el panel `/admin` para subir imágenes a cada categoría
+2. **Netlify CMS**: Crea archivos `.md` con metadata en `public/images/[categoria]/`
+3. **Build automático**: Netlify detecta los cambios y hace rebuild
+4. **Script**: `generate-image-list.cjs` lee todos los `.md` y genera `src/data/images.json`
+5. **La página**: Lee el JSON y muestra las imágenes en las galerías
+
+### Desarrollo local:
+
+Para probar localmente después de agregar imágenes:
+
+```bash
+npm run generate-images
+npm run dev
+```
+
+### Categorías disponibles:
+
+- 👕 **Uniformes**: `public/images/uniformes/`
+- 🧢 **Gorras**: `public/images/gorras/`
+- ☕ **Posillos**: `public/images/posillos/`
+- 🎨 **Estampados**: `public/images/estampados/`
+
+### Flujo completo:
+
+```
+Usuario sube imagen en /admin
+↓
+Netlify CMS crea archivo .md con metadata
+↓
+Git detecta cambio → Push al repositorio
+↓
+Netlify detecta cambio → Inicia build
+↓
+Ejecuta: npm run build (incluye prebuild script)
+↓
+Script lee todos los .md y extrae rutas de imágenes
+↓
+Genera src/data/images.json actualizado
+↓
+Vite hace build de React
+↓
+useImages lee images.json
+↓
+ImageGallery muestra las imágenes
+↓
+✅ ¡La imagen aparece en la página!
+```
+
