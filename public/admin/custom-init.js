@@ -2,6 +2,7 @@
 // CONFIGURACIÓN PERSONALIZADA DEL CMS
 // Daniel Publicidad
 // ============================================
+/* global CMS */
 
 console.log('🎨 Daniel Publicidad - Panel de Administración');
 

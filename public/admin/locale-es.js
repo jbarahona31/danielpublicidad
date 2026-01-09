@@ -2,6 +2,7 @@
 // TRADUCCIONES AL ESPAÑOL - Netlify CMS
 // Daniel Publicidad
 // ============================================
+/* global CMS */
 
 const es = {
   auth: {
