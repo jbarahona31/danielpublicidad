@@ -2,50 +2,69 @@ backend:
   name: git-gateway
   branch: main
 
+# Importante: Permitir operaciones de escritura y eliminación
+publish_mode: editorial_workflow  # Opcional: revisar antes de publicar
 media_folder: "public/images"
 public_folder: "/images"
 
+# Configuración de colecciones con eliminación habilitada
 collections:
   - name: "uniformes"
-    label: "Uniformes"
+    label: "👕 Uniformes"
     label_singular: "Uniforme"
+    description: "Gestiona las imágenes de uniformes"
     folder: "public/images/uniformes"
     create: true
-    slug: "{{slug}}"
+    delete: true  # ← IMPORTANTE: Permite eliminar
+    slug: "uniforme-{{year}}-{{month}}-{{day}}-{{hour}}{{minute}}{{second}}"
+    extension: "md"
+    format: "frontmatter"
     fields:
-      - {label: "Imagen", name: "image", widget: "image"}
-      - {label: "Título", name: "title", widget: "string", default: "Uniforme"}
-      - {label: "Fecha", name: "date", widget: "datetime", default: ""}
+      - {label: "Imagen", name: "image", widget: "image", required: true}
+      - {label: "Nombre", name: "title", widget: "string", default: "Uniforme", required: false}
+      - {label: "Descripción", name: "description", widget: "text", required: false}
 
   - name: "gorras"
-    label: "Gorras"
+    label: "🧢 Gorras"
     label_singular: "Gorra"
+    description: "Gestiona las imágenes de gorras"
     folder: "public/images/gorras"
     create: true
-    slug: "{{slug}}"
+    delete: true  # ← IMPORTANTE: Permite eliminar
+    slug: "gorra-{{year}}-{{month}}-{{day}}-{{hour}}{{minute}}{{second}}"
+    extension: "md"
+    format: "frontmatter"
     fields:
-      - {label: "Imagen", name: "image", widget: "image"}
-      - {label: "Título", name: "title", widget: "string", default: "Gorra"}
-      - {label: "Fecha", name: "date", widget: "datetime", default: ""}
+      - {label: "Imagen", name: "image", widget: "image", required: true}
+      - {label: "Nombre", name: "title", widget: "string", default: "Gorra", required: false}
+      - {label: "Descripción", name: "description", widget: "text", required: false}
 
   - name: "posillos"
-    label: "Posillos"
+    label: "☕ Posillos"
     label_singular: "Posillo"
+    description: "Gestiona las imágenes de posillos"
     folder: "public/images/posillos"
     create: true
-    slug: "{{slug}}"
+    delete: true  # ← IMPORTANTE: Permite eliminar
+    slug: "posillo-{{year}}-{{month}}-{{day}}-{{hour}}{{minute}}{{second}}"
+    extension: "md"
+    format: "frontmatter"
     fields:
-      - {label: "Imagen", name: "image", widget: "image"}
-      - {label: "Título", name: "title", widget: "string", default: "Posillo"}
-      - {label: "Fecha", name: "date", widget: "datetime", default: ""}
+      - {label: "Imagen", name: "image", widget: "image", required: true}
+      - {label: "Nombre", name: "title", widget: "string", default: "Posillo", required: false}
+      - {label: "Descripción", name: "description", widget: "text", required: false}
 
   - name: "estampados"
-    label: "Estampados"
+    label: "🎨 Estampados"
     label_singular: "Estampado"
+    description: "Gestiona las imágenes de estampados"
     folder: "public/images/estampados"
     create: true
-    slug: "{{slug}}"
+    delete: true  # ← IMPORTANTE: Permite eliminar
+    slug: "estampado-{{year}}-{{month}}-{{day}}-{{hour}}{{minute}}{{second}}"
+    extension: "md"
+    format: "frontmatter"
     fields:
-      - {label: "Imagen", name: "image", widget: "image"}
-      - {label: "Título", name: "title", widget: "string", default: "Estampado"}
-      - {label: "Fecha", name: "date", widget: "datetime", default: ""}
+      - {label: "Imagen", name: "image", widget: "image", required: true}
+      - {label: "Nombre", name: "title", widget: "string", default: "Estampado", required: false}
+      - {label: "Descripción", name: "description", widget: "text", required: false}

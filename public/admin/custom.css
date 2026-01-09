@@ -1,6 +1,6 @@
 /* ============================================
    🎨 PANEL DE ADMINISTRACIÓN - DANIEL PUBLICIDAD
-   Colores de marca: Amarillo (#fbbf24) y Negro (#1f2937)
+   Diseño personalizado con logo y colores de marca
    ============================================ */
 
 :root {
@@ -8,9 +8,10 @@
   --amarillo-hover: #f59e0b;
   --amarillo-claro: #fef3c7;
   --negro-principal: #1f2937;
+  --negro-hover: #111827;
   --gris-oscuro: #374151;
   --gris-medio: #6b7280;
-  --blanco: #ffffff;
+  --gris-claro: #f3f4f6;
 }
 
 /* ============================================
@@ -27,16 +28,59 @@ body {
 /* ============================================
    HEADER PRINCIPAL CON LOGO
    ============================================ */
-[class*="AppHeader"],
-[class*="AppHeader-"],
-header[class*="App"] {
-  background: linear-gradient(135deg, var(--amarillo-principal) 0%, var(--amarillo-hover) 100%) !important;
+[class*="AppHeader-"] {
+  background: var(--negro-principal) !important;
+  border-bottom: 4px solid var(--amarillo-principal) !important;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
-  padding: 0 !important;
-  border-bottom: 3px solid var(--negro-principal) !important;
-  min-height: 70px !important;
+  padding: 1rem 2rem !important;
+  min-height: 80px !important;
   display: flex !important;
   align-items: center !important;
+}
+
+/* Logo personalizado */
+[class*="AppHeader-"]::before {
+  content: "" !important;
+  display: inline-block !important;
+  width: 60px !important;
+  height: 60px !important;
+  background-image: url('/logo.png') !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  margin-right: 1rem !important;
+  vertical-align: middle !important;
+}
+
+/* Título del header */
+[class*="AppHeader-"] h1,
+[class*="AppHeader-"] a {
+  color: white !important;
+  font-weight: 700 !important;
+  font-size: 1.5rem !important;
+}
+
+[class*="AppHeader-"] h1::after {
+  content: " - Panel de Administración" !important;
+  font-weight: 400 !important;
+  font-size: 1rem !important;
+  color: var(--amarillo-principal) !important;
+}
+
+/* Botones en el header */
+[class*="AppHeader-"] button {
+  background: var(--amarillo-principal) !important;
+  color: var(--negro-principal) !important;
+  border: none !important;
+  border-radius: 8px !important;
+  padding: 0.5rem 1rem !important;
+  font-weight: 600 !important;
+  transition: all 0.3s ease !important;
+}
+
+[class*="AppHeader-"] button:hover {
+  background: var(--amarillo-hover) !important;
+  transform: translateY(-2px) !important;
 }
 
 /* Logo container custom */
@@ -162,22 +206,49 @@ nav[class*="Sidebar"] a[class*="active"] {
   display: inline-block !important;
 }
 
+/* Emojis grandes en las categorías */
+nav[class*="Sidebar"] a::before,
+[class*="CollectionLink-"]::before {
+  font-size: 1.75rem !important;
+  margin-right: 0.75rem !important;
+  display: inline-block !important;
+}
+
 /* ============================================
    ÁREA DE CONTENIDO PRINCIPAL
    ============================================ */
 [class*="MainView"],
 [class*="MainContent"],
 main {
-  background: #f9fafb !important;
+  background: var(--gris-claro) !important;
+  min-height: 100vh !important;
+}
+
+/* Contenedor de contenido */
+[class*="CollectionMain-"],
+[class*="CollectionView-"] {
+  padding: 2rem !important;
 }
 
 /* Título de la colección actual */
 [class*="CollectionTop"] h1,
-[class*="ViewControls"] h1 {
+[class*="ViewControls"] h1,
+[class*="CollectionTop-"] h1,
+[class*="ViewControlsContainer-"] h1,
+h1[class*="CollectionHeader"] {
   color: var(--negro-principal) !important;
   font-size: 2.25rem !important;
   font-weight: 700 !important;
   margin-bottom: 1.5rem !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+/* Emoji en el título */
+[class*="CollectionTop-"] h1::before,
+[class*="ViewControlsContainer-"] h1::before {
+  font-size: 2.5rem !important;
+  margin-right: 1rem !important;
 }
 
 /* ============================================
@@ -187,7 +258,9 @@ main {
 /* Botón principal "New [Categoría]" */
 button[class*="Button-primary"],
 button[class*="StyledButton"]:not([class*="secondary"]),
-[class*="ControlButton"] {
+[class*="ControlButton"],
+button[class*="ControlButton"],
+[class*="ToolbarButton-"][class*="primary"] {
   background: var(--amarillo-principal) !important;
   color: var(--negro-principal) !important;
   border: none !important;
@@ -203,27 +276,65 @@ button[class*="StyledButton"]:not([class*="secondary"]),
 }
 
 button[class*="Button-primary"]:hover,
-[class*="ControlButton"]:hover {
+[class*="ControlButton"]:hover,
+button[class*="ControlButton"]:hover,
+[class*="ToolbarButton-"][class*="primary"]:hover {
   background: var(--amarillo-hover) !important;
   transform: translateY(-3px) !important;
   box-shadow: 0 6px 25px rgba(251, 191, 36, 0.5) !important;
 }
 
 /* Botón "Publish" */
-button[class*="success"] {
+button[class*="success"],
+button[type="submit"] {
   background: #10b981 !important;
   color: white !important;
+  border: none !important;
+  border-radius: 10px !important;
+  padding: 0.875rem 1.75rem !important;
+  font-weight: 600 !important;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3) !important;
+  transition: all 0.3s ease !important;
 }
 
-button[class*="success"]:hover {
+button[class*="success"]:hover,
+button[type="submit"]:hover {
   background: #059669 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4) !important;
+}
+
+/* Botón de eliminar - CRÍTICO */
+button[class*="danger"],
+button[class*="Delete"],
+button[title*="Delete"],
+button[title*="delete"] {
+  background: #ef4444 !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 8px !important;
+  padding: 0.75rem 1.5rem !important;
+  font-weight: 600 !important;
+  box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3) !important;
+  transition: all 0.3s ease !important;
+}
+
+button[class*="danger"]:hover,
+button[class*="Delete"]:hover,
+button[title*="Delete"]:hover,
+button[title*="delete"]:hover {
+  background: #dc2626 !important;
+  transform: scale(1.05) !important;
+  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4) !important;
 }
 
 /* Botones secundarios */
 button[class*="Button-secondary"],
-button[class*="StyledButton-secondary"] {
+button[class*="StyledButton-secondary"],
+button[class*="secondary"],
+button[class*="Button-"][class*="default"] {
   background: white !important;
-  border: 2px solid var(--gris-oscuro) !important;
+  border: 2px solid var(--gris-medio) !important;
   color: var(--gris-oscuro) !important;
   border-radius: 12px !important;
   padding: 1rem 2rem !important;
@@ -231,7 +342,8 @@ button[class*="StyledButton-secondary"] {
   transition: all 0.3s ease !important;
 }
 
-button[class*="Button-secondary"]:hover {
+button[class*="Button-secondary"]:hover,
+button[class*="secondary"]:hover {
   border-color: var(--amarillo-principal) !important;
   color: var(--amarillo-principal) !important;
   background: var(--amarillo-claro) !important;
@@ -333,11 +445,103 @@ label {
 
 [class*="NoEntries"]::before,
 [class*="EmptyMessage"]::before {
-  content: "📂" !important;
+  content: "📸" !important;
   font-size: 5rem !important;
   display: block !important;
   margin-bottom: 1.5rem !important;
   opacity: 0.5 !important;
+}
+
+[class*="NoEntries"]::after,
+[class*="EmptyMessage"]::after {
+  content: "Agrega tu primera imagen usando el botón de arriba" !important;
+  display: block !important;
+  margin-top: 1rem !important;
+  font-size: 1.1rem !important;
+  color: var(--gris-oscuro) !important;
+}
+
+/* ============================================
+   TABLA DE CONTENIDO
+   ============================================ */
+table {
+  width: 100% !important;
+  border-collapse: separate !important;
+  border-spacing: 0 0.5rem !important;
+}
+
+thead th {
+  background: var(--negro-principal) !important;
+  color: white !important;
+  padding: 1rem !important;
+  text-align: left !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  font-size: 0.875rem !important;
+  letter-spacing: 0.5px !important;
+}
+
+tbody tr {
+  background: white !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05) !important;
+  transition: all 0.3s ease !important;
+}
+
+tbody tr:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1) !important;
+  transform: scale(1.01) !important;
+}
+
+tbody td {
+  padding: 1rem !important;
+  border-bottom: 1px solid #f3f4f6 !important;
+}
+
+/* ============================================
+   PREVIEW DE IMÁGENES
+   ============================================ */
+[class*="ImagePreview"],
+img[class*="preview"] {
+  border-radius: 12px !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
+  transition: all 0.3s ease !important;
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+[class*="ImagePreview"]:hover,
+img[class*="preview"]:hover {
+  transform: scale(1.05) !important;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* ============================================
+   BADGES Y ETIQUETAS
+   ============================================ */
+[class*="Badge"],
+[class*="StatusBadge"],
+span[class*="status"] {
+  border-radius: 20px !important;
+  padding: 0.375rem 1rem !important;
+  font-size: 0.875rem !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+}
+
+/* ============================================
+   BOTÓN DE ACCIÓN EN CARDS (ELIMINAR)
+   ============================================ */
+[class*="CardActions"],
+[class*="EntryActions"] {
+  display: flex !important;
+  gap: 0.5rem !important;
+  margin-top: 1rem !important;
+}
+
+[class*="CardActions"] button,
+[class*="EntryActions"] button {
+  flex: 1 !important;
 }
 
 /* ============================================
@@ -390,6 +594,48 @@ label {
   color: var(--negro-principal) !important;
   padding: 1.5rem 2rem !important;
   border-radius: 20px 20px 0 0 !important;
+}
+
+/* ============================================
+   MODALES Y DIALOGS
+   ============================================ */
+[class*="Modal"],
+[class*="Dialog"] {
+  border-radius: 20px !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3) !important;
+}
+
+[class*="ModalHeader"] {
+  background: linear-gradient(135deg, var(--amarillo-principal) 0%, var(--amarillo-hover) 100%) !important;
+  color: var(--negro-principal) !important;
+  padding: 1.5rem 2rem !important;
+  border-radius: 20px 20px 0 0 !important;
+}
+
+/* ============================================
+   EXTRAS - LOADING Y FEEDBACK
+   ============================================ */
+[class*="Loading"],
+[class*="Spinner"] {
+  border-color: var(--amarillo-principal) var(--amarillo-claro) var(--amarillo-claro) !important;
+}
+
+/* Notificaciones */
+[class*="notification"],
+[class*="Toast"] {
+  border-radius: 12px !important;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2) !important;
+  padding: 1.5rem !important;
+}
+
+[class*="notification-success"] {
+  background: #10b981 !important;
+  color: white !important;
+}
+
+[class*="notification-error"] {
+  background: #ef4444 !important;
+  color: white !important;
 }
 
 /* ============================================
