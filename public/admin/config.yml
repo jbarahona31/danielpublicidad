@@ -2,6 +2,10 @@ backend:
   name: git-gateway
   branch: main
 
+# Configuración en español
+locale: 'es'
+
+# Media
 media_folder: "public/images"
 public_folder: "/images"
 
@@ -18,9 +22,22 @@ collections:
     extension: "md"
     format: "frontmatter"
     fields:
-      - {label: "Imagen", name: "image", widget: "image", required: true}
-      - {label: "Nombre", name: "title", widget: "string", default: "Uniforme", required: false}
-      - {label: "Descripción", name: "description", widget: "text", required: false}
+      - label: "Imagen del Producto"
+        name: "image"
+        widget: "image"
+        required: true
+        hint: "Arrastra tu imagen aquí o haz click para seleccionar"
+      - label: "Nombre del Producto"
+        name: "title"
+        widget: "string"
+        default: "Uniforme"
+        required: false
+        hint: "Opcional: Dale un nombre descriptivo"
+      - label: "Descripción"
+        name: "description"
+        widget: "text"
+        required: false
+        hint: "Opcional: Agrega detalles del producto"
 
   - name: "gorras"
     label: "🧢 Gorras"
@@ -28,14 +45,27 @@ collections:
     description: "Gestiona las imágenes de gorras"
     folder: "public/images/gorras"
     create: true
-    delete: true  # ← IMPORTANTE: Permite eliminar
+    delete: true
     slug: "gorra-{{year}}-{{month}}-{{day}}-{{hour}}{{minute}}{{second}}"
     extension: "md"
     format: "frontmatter"
     fields:
-      - {label: "Imagen", name: "image", widget: "image", required: true}
-      - {label: "Nombre", name: "title", widget: "string", default: "Gorra", required: false}
-      - {label: "Descripción", name: "description", widget: "text", required: false}
+      - label: "Imagen del Producto"
+        name: "image"
+        widget: "image"
+        required: true
+        hint: "Arrastra tu imagen aquí o haz click para seleccionar"
+      - label: "Nombre del Producto"
+        name: "title"
+        widget: "string"
+        default: "Gorra"
+        required: false
+        hint: "Opcional: Dale un nombre descriptivo"
+      - label: "Descripción"
+        name: "description"
+        widget: "text"
+        required: false
+        hint: "Opcional: Agrega detalles del producto"
 
   - name: "posillos"
     label: "☕ Posillos"
@@ -43,14 +73,27 @@ collections:
     description: "Gestiona las imágenes de posillos"
     folder: "public/images/posillos"
     create: true
-    delete: true  # ← IMPORTANTE: Permite eliminar
+    delete: true
     slug: "posillo-{{year}}-{{month}}-{{day}}-{{hour}}{{minute}}{{second}}"
     extension: "md"
     format: "frontmatter"
     fields:
-      - {label: "Imagen", name: "image", widget: "image", required: true}
-      - {label: "Nombre", name: "title", widget: "string", default: "Posillo", required: false}
-      - {label: "Descripción", name: "description", widget: "text", required: false}
+      - label: "Imagen del Producto"
+        name: "image"
+        widget: "image"
+        required: true
+        hint: "Arrastra tu imagen aquí o haz click para seleccionar"
+      - label: "Nombre del Producto"
+        name: "title"
+        widget: "string"
+        default: "Posillo"
+        required: false
+        hint: "Opcional: Dale un nombre descriptivo"
+      - label: "Descripción"
+        name: "description"
+        widget: "text"
+        required: false
+        hint: "Opcional: Agrega detalles del producto"
 
   - name: "estampados"
     label: "🎨 Estampados"
@@ -58,11 +101,24 @@ collections:
     description: "Gestiona las imágenes de estampados"
     folder: "public/images/estampados"
     create: true
-    delete: true  # ← IMPORTANTE: Permite eliminar
+    delete: true
     slug: "estampado-{{year}}-{{month}}-{{day}}-{{hour}}{{minute}}{{second}}"
     extension: "md"
     format: "frontmatter"
     fields:
-      - {label: "Imagen", name: "image", widget: "image", required: true}
-      - {label: "Nombre", name: "title", widget: "string", default: "Estampado", required: false}
-      - {label: "Descripción", name: "description", widget: "text", required: false}
+      - label: "Imagen del Producto"
+        name: "image"
+        widget: "image"
+        required: true
+        hint: "Arrastra tu imagen aquí o haz click para seleccionar"
+      - label: "Nombre del Producto"
+        name: "title"
+        widget: "string"
+        default: "Estampado"
+        required: false
+        hint: "Opcional: Dale un nombre descriptivo"
+      - label: "Descripción"
+        name: "description"
+        widget: "text"
+        required: false
+        hint: "Opcional: Agrega detalles del producto"
