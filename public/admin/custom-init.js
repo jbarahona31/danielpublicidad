@@ -16,12 +16,18 @@ if (window.CMS) {
 // ============================================
 
 let logoInserted = false;
+let checkHeaderInterval = null;
 
 function insertLogo() {
   if (logoInserted) return;
   
+  // Limpiar intervalo anterior si existe
+  if (checkHeaderInterval) {
+    clearInterval(checkHeaderInterval);
+  }
+  
   // Esperar a que el DOM esté listo
-  const checkHeader = setInterval(() => {
+  checkHeaderInterval = setInterval(() => {
     // Buscar el header principal (el primero en el DOM)
     const headers = document.querySelectorAll('[class*="AppHeader"]');
     
@@ -30,23 +36,36 @@ function insertLogo() {
       
       // Verificar que no tenga ya el logo
       if (!mainHeader.querySelector('.daniel-logo')) {
-        // Crear elemento del logo
+        // Crear elemento del logo de forma segura
         const logoDiv = document.createElement('div');
         logoDiv.className = 'daniel-logo';
-        logoDiv.innerHTML = '<img src="/logo.png" alt="Daniel Publicidad" style="height: 60px; margin-right: 1rem;">';
+        
+        const logoImg = document.createElement('img');
+        logoImg.src = '/logo.png';
+        logoImg.alt = 'Daniel Publicidad';
+        logoImg.style.height = '60px';
+        logoImg.style.marginRight = '1rem';
+        
+        logoDiv.appendChild(logoImg);
         
         // Insertar al inicio del header
         mainHeader.insertBefore(logoDiv, mainHeader.firstChild);
         
         logoInserted = true;
-        clearInterval(checkHeader);
+        clearInterval(checkHeaderInterval);
+        checkHeaderInterval = null;
         console.log('✅ Logo insertado correctamente');
       }
     }
   }, 100);
   
   // Timeout de seguridad
-  setTimeout(() => clearInterval(checkHeader), 5000);
+  setTimeout(() => {
+    if (checkHeaderInterval) {
+      clearInterval(checkHeaderInterval);
+      checkHeaderInterval = null;
+    }
+  }, 5000);
 }
 
 // Ejecutar cuando el CMS cargue
@@ -57,13 +76,11 @@ if (window.CMS) {
   });
 }
 
-// Fallback: ejecutar después de load
-window.addEventListener('load', () => {
-  setTimeout(insertLogo, 1000);
-});
-
 // Aplicar ajustes después de la carga
 window.addEventListener('load', function() {
+  // Ejecutar inserción de logo
+  setTimeout(insertLogo, 1000);
+  
   setTimeout(function() {
     // Confirmación para botones de eliminar
     document.addEventListener('click', function(e) {
