@@ -24,7 +24,7 @@
 /* ============================================
    HEADER PRINCIPAL CON LOGO
    ============================================ */
-[class*="AppHeader"] {
+[class*="AppHeader"]:first-of-type {
   background: var(--negro-principal) !important;
   border-bottom: 4px solid var(--amarillo-principal) !important;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
@@ -35,7 +35,7 @@
 }
 
 /* Logo de Daniel Publicidad */
-body > div > [class*="AppHeader"]::before {
+body > div:first-child > [class*="AppHeader"]:first-of-type::before {
   content: "" !important;
   display: inline-block !important;
   width: 60px !important;
@@ -374,11 +374,11 @@ select,
    RESPONSIVE
    ============================================ */
 @media (max-width: 768px) {
-  [class*="AppHeader"] {
+  [class*="AppHeader"]:first-of-type {
     padding: 1rem !important;
   }
 
-  body > div > [class*="AppHeader"]::before {
+  body > div:first-child > [class*="AppHeader"]:first-of-type::before {
     width: 50px !important;
     height: 50px !important;
   }
