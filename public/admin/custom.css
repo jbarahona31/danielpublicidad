@@ -22,12 +22,11 @@
 }
 
 /* ============================================
-   HEADER PRINCIPAL CON LOGO
+   HEADER PRINCIPAL - SIN LOGO EN CSS
    ============================================ */
-/* RESETEAR bordes en todos */
 [class*="AppHeader"] {
   background: var(--negro-principal) !important;
-  border-bottom: none !important; /* RESET */
+  border-bottom: none !important; /* Reset todos */
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
   padding: 1rem 2rem !important;
   min-height: 80px !important;
@@ -35,28 +34,29 @@
   align-items: center !important;
 }
 
-/* Borde SOLO en el primer header */
+/* Borde SOLO en el primero */
 [class*="AppHeader"]:first-of-type {
   border-bottom: 4px solid var(--amarillo-principal) !important;
 }
 
-/* Logo SOLO en el primer header usando nth-of-type */
-[class*="AppHeader"]:nth-of-type(1)::before {
-  content: "" !important;
-  display: inline-block !important;
-  width: 60px !important;
-  height: 60px !important;
-  background-image: url('/logo.png') !important;
-  background-size: contain !important;
-  background-repeat: no-repeat !important;
-  background-position: center !important;
-  margin-right: 1rem !important;
-  flex-shrink: 0 !important;
+/* ELIMINAR COMPLETAMENTE ::before */
+[class*="AppHeader"]::before {
+  display: none !important;
+  content: none !important;
 }
 
-/* Prevenir duplicados */
-[class*="AppHeader"]:not(:nth-of-type(1))::before {
-  display: none !important;
+/* Estilo para el logo insertado con JS */
+.daniel-logo {
+  display: flex !important;
+  align-items: center !important;
+  flex-shrink: 0 !important;
+  margin-right: 1rem !important;
+}
+
+.daniel-logo img {
+  height: 60px !important;
+  width: auto !important;
+  object-fit: contain !important;
 }
 
 [class*="AppHeader"] h1,
