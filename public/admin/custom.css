@@ -389,8 +389,7 @@ select,
     padding: 1rem !important;
   }
 
-  [class*="AppHeader"]:nth-of-type(1)::before {
-    width: 50px !important;
+  .daniel-logo img {
     height: 50px !important;
   }
 
